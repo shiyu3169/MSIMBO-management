@@ -1,3 +1,53 @@
-<p>
-  video works!
-</p>
+<!-- Navbar -->
+<nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">MSIMBO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/students">Students</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/curriculum">Curriculum</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/video">Class Video</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about">About MSIMBO</a>
+      </li>
+    </ul>
+	<button routerLink="/login" class="d-none d-lg-block btn btn-outline-success" type="button">Student Login</button>
+	<button routerLink="/login" class="d-lg-none btn btn-block btn-outline-success" type="button">Student Login</button>
+  </div>
+</nav>
+<br>
+<div class="container-fluid">
+	<h3>Assignment Videos</h3>
+	<div class="embed-responsive embed-responsive-16by9 w-50" >
+		<iframe src="https://www.youtube.com/embed/videoseries?list=PLUEkoyTOepv5fpatWg3dqVPLMbXXRsvAD" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	</div>
+	<br>
+	<h3>Project Videos</h3>
+	<div class="embed-responsive embed-responsive-16by9 w-50" >
+		<iframe src="https://www.youtube.com/embed/videoseries?list=PLUEkoyTOepv7MV7pHhqsmDG1rjnbA2_Tm" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	</div>
+	<br>
+	<h3>Helpful Videos for beginners</h3>
+	<div class="embed-responsive embed-responsive-16by9 w-50" >
+		<iframe src="https://www.youtube.com/embed/videoseries?list=PLUEkoyTOepv6cPQwSdnTUE2R054sClncH" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	</div>
+</div>
+<footer class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom" id="footerNav">
+	<div class="sw-full-width">
+		<p  class="sw-text-center">
+			<a routerLink="/" class="navbar-brand">MSIMBO</a>
+		</p>
+	</div>
+</footer>
