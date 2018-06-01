@@ -8,7 +8,8 @@ import { VideoComponent } from './components/video/video.component';
 import { StudentListComponent } from './components/student-list/student-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { AboutComponent } from './components/about/about.component';
-// Import all other components here 
+import { AssignmentListComponent } from './components/assignment-list/assignment-list.component';
+import { AssignmentDetailComponent } from './components/assignment-detail/assignment-detail.component';
 
 const APP_ROUTES : Routes = [
   { path : '', component : HomeComponent},
@@ -17,7 +18,9 @@ const APP_ROUTES : Routes = [
   { path : 'curriculum', component : CurriculumComponent},
   { path : 'video', component : VideoComponent},
   { path : 'students', component : StudentListComponent},
-  { path : 'about', component : AboutComponent}
+  { path : 'about', component : AboutComponent},
+  { path : 'assignment', component : AssignmentListComponent},
+  { path : 'asiggnment/:aid', component : AssignmentDetailComponent}
 ];
 
 // Export the routes as module providers

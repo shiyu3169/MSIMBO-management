@@ -1,59 +1,54 @@
 <!-- Navbar -->
 <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">MSIMBO</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <a class="navbar-brand" href="#">MSIMBO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/students">Students</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/curriculum">Curriculum</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/video">Class Video</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/about">About MSIMBO</a>
-      </li>
-    </ul>
-  <button routerLink="/login" class="d-none d-lg-block btn btn-outline-success" type="button">Student Login</button>
-  <button routerLink="/login" class="d-lg-none btn btn-block btn-outline-success" type="button">Student Login</button>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/students">Students</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/curriculum">Curriculum</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/assignment">Assignments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/video">Class Video</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/about">About MSIMBO</a>
+            </li>
+        </ul>
+        <button routerLink="/login" class="d-none d-lg-block btn btn-outline-success" type="button">Student Login</button>
+        <button routerLink="/login" class="d-lg-none btn btn-block btn-outline-success" type="button">Student Login</button>
+    </div>
 </nav>
 <br>
 <br>
-<br>
-<br>
+<!-- container -->
 <div class="container-fluid">
-  <!-- <div *ngIf="errorFlag" class="alert alert-danger">Invalid username or password</div> -->
-  <form>
-    <div class="form-group">
-      <input class="form-control" type="text" name="username" placeholder="Username" required>
-    </div>
-<!--     <span class="alert" *ngIf="username.invalid && username.touched">Please enter username!</span> -->
-    <div class="form-group">
-      <input class="form-control" required type="password" name="password" placeholder="Password">
-    </div>
-<!--     <span class="alert" *ngIf="password.invalid && password.touched">Please enter password!</span> -->
+    <h2>Student Login</h2>
     <br>
-    <button class="btn btn-outline-primary btn-block" type="submit">Login</button>
-    <br>
-    <button type="button" class="btn btn-outline-secondary float-right my-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="All MSIMBO students account are registered and managed by Instructor. Please contact the Instructor if you are student at MSIMBO.">
-  Having trouble to login?
-</button>
-  </form>
+    <div *ngIf="errorFlag" class="alert alert-danger">Invalid username or password!</div>
+    <form (ngSubmit)="login()" #f="ngForm">
+        <div class="form-group">
+            <input class="form-control" type="text" name="username" placeholder="Username" required ngModel #username="ngModel">
+        </div>
+        <div class="alert alert-warning" *ngIf="username.invalid && username.touched">Please enter username!</div>
+        <div class="form-group">
+            <input class="form-control" required type="password" name="password" placeholder="Password" ngModel #password="ngModel">
+        </div>
+        <div class="alert alert-warning" *ngIf="password.invalid && password.touched">Please enter password!</div>
+        <br>
+        <button class="btn btn-outline-primary btn-block" type="submit">Login</button>
+        <br>
+        <button type="button" class="btn btn-outline-secondary float-right my-popover" data-container="body" data-toggle="  popover" data-placement="bottom" data-content="All MSIMBO students account are registered and managed by Instructor. Please contact the Instructor if you are student at MSIMBO.">Having trouble to login?</button>
+    </form>
 </div>
-<footer class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom" id="footerNav">
-  <div class="sw-full-width">
-    <p  class="sw-text-center">
-      <a routerLink="/" class="navbar-brand">MSIMBO</a>
-    </p>
-  </div>
-</footer>

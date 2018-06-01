@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {UserService} from '../../services/user.service.client';
+import {User} from '../../models/user.model.client';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-student-list',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentListComponent implements OnInit {
 
-  constructor() { }
+  users: User[];
 
+  constructor(private userService: UserService) { }
+  
   ngOnInit() {
+  	this.userService.findUsers().subscribe(
+  		(users:User[]) => {
+  			this.users = users;
+  			// console.log(this.users[1]);
+  			}
+  		);
   }
 
 }
