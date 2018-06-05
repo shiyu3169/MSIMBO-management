@@ -14,11 +14,11 @@ import { LoginComponent } from './components/login/login.component';
 import { AboutComponent } from './components/about/about.component';
 import { AssignmentListComponent } from './components/assignment-list/assignment-list.component';
 import { AssignmentDetailComponent } from './components/assignment-detail/assignment-detail.component';
-// Services
-import { UserService } from './services/user.service.client';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
+// Services
+import { UserService } from './services/user.service.client';
+import { AssignmentService } from './services/assignment.service.client';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     FormsModule,
     HttpModule
   ],
-  providers: [UserService],
+  providers: [UserService, AssignmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

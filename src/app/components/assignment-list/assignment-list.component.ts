@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AssignmentService } from '../../services/assignment.service.client';
+import { Assignment } from '../../models/assignment.model.client';
+import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-assignment-list',
-  templateUrl: './assignment-list.component.html',
-  styleUrls: ['./assignment-list.component.css']
+	selector: 'app-assignment-list',
+  	templateUrl: './assignment-list.component.html',
+  	styleUrls: ['./assignment-list.component.css']
 })
 export class AssignmentListComponent implements OnInit {
 
-  constructor() { }
+	assignments: Assignment[];
 
-  ngOnInit() {
-  }
+
+  	constructor(private assignmentService: AssignmentService) { }
+
+  	ngOnInit() {
+  		this.assignmentService.findAssignments().subscribe(
+  			(assignments: Assignment[]) => {
+  				this.assignments = assignments;
+  			}
+  		);
+  	}
 
 }

@@ -6,7 +6,6 @@ module.exports = function (app) {
 	var users = [
 		{ _id: '123', username: 'alice', password: 'alice', firstName: 'Alice',  lastName: 'Wonder', email: 'alice@gmail.com', admin: false, image:'public/user.png', bio:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
 		{ _id: '666', username: 'swang', password: 'Cliff92813!', firstName: 'Shiyu',  lastName: 'Wang', email: 'shiyu3169@gmail.com', admin: true, image:'public/user.png', bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."}
-
 	]
 
 	function findUsers(req, res) {
