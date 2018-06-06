@@ -19,6 +19,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 // Services
 import { UserService } from './services/user.service.client';
 import { AssignmentService } from './services/assignment.service.client';
+import { WikiComponent } from './components/wiki/wiki.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AssignmentService } from './services/assignment.service.client';
     AssignmentListComponent,
     AssignmentDetailComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    WikiComponent
   ],
   imports: [
     BrowserModule,
