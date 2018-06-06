@@ -23,7 +23,9 @@ export class LoginComponent implements OnInit {
 
 	ngOnInit() {
 		jQuery(function () {
-			jQuery('.my-popover').popover()
+			jQuery('.my-popover').popover({
+				trigger:'focus'
+			})
 		})
 	}
 
