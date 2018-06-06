@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AssignmentService } from '../../services/assignment.service.client';
+import { Assignment } from '../../models/assignment.model.client';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+	assignments: Assignment[];
+
+  	constructor(private assignmentService: AssignmentService) { }
 
   ngOnInit() {
+  	this.assignmentService.findAssignments().subscribe(
+  			(assignments: Assignment[]) => {
+  				this.assignments = assignments;
+  			}
+  		);
   }
 
 }
