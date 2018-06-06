@@ -1,5 +1,6 @@
 module.exports = function (app) {
 	app.get("/api/assignment", findAssignments);
+	app.get("/api/assignment/:aid", findAssignemntById);
 
 	var assignments = [
 		{ _id: '123', name: 'Assignment 1', due:"April 23, 2018", src: "https://docs.google.com/document/d/e/2PACX-1vTmO2soTz5q4US5Prw0H7VZGr0df52mc-3LltYz1vc3G5hi9AU3bTqffAEYNlaBbSa5tiimfjpvNeWJ/pub?embedded=true"},
@@ -10,7 +11,17 @@ module.exports = function (app) {
 	]
 
 	function findAssignments(req, res) {
-		console.log(assignments);
+		// console.log(assignments);
     	res.json(assignments);
+	}
+
+	function findAssignemntById(req, res) {
+		const aid = req.params['aid'];
+		const assignment = assignments.find(
+			assignment=> {
+				return assignment._id === aid
+			}
+		)
+		res.json(assignment);
 	}
 }

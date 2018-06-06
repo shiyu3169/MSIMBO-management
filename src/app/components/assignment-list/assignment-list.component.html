@@ -14,7 +14,7 @@
 	</thead>
 	<tbody>
 		<tr *ngFor="let assignment of assignments">
-			<td><a href="#">{{assignment.name}}</a></td>
+			<td><a routerLink="/assignment/{{assignment._id}}">{{assignment.name}}</a></td>
 			<td>{{assignment.due}}</td>
 		</tr>
 	</tbody>

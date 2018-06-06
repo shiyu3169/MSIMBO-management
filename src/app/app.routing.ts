@@ -20,7 +20,7 @@ const APP_ROUTES : Routes = [
   { path : 'students', component : StudentListComponent},
   { path : 'about', component : AboutComponent},
   { path : 'assignment', component : AssignmentListComponent},
-  { path : 'asiggnment/:aid', component : AssignmentDetailComponent}
+  { path : 'assignment/:aid', component : AssignmentDetailComponent}
 ];
 
 // Export the routes as module providers
