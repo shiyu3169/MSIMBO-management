@@ -20,8 +20,8 @@ export class AssignmentService {
         ));
     }
 
-    findAssignmentById(uid: string) {
-        const url = this.baseUrl + '/api/assignment/' + uid;
+    findAssignmentById(aid: string) {
+        const url = this.baseUrl + '/api/assignment/' + aid;
         return this.http.get(url).pipe(map(
             (response: Response) => {
                 return response.json();

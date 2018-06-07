@@ -12,16 +12,25 @@ export class UserService {
 	constructor(private http: Http) {}
 
 	findUserByCredentials(username: String, password: String) {
-    	const url =  this.baseUrl + '/api/user?username=' + username + '&password=' + password;
-    	return this.http.get(url).pipe(map(
+        const url =  this.baseUrl + '/api/user?username=' + username + '&password=' + password;
+        return this.http.get(url).pipe(map(
         	(response: Response) => {
-          		return response.json();
-      		}
-      	));
-  	}
+                return response.json();
+            }
+            ));
+    }
 
     findUsers() {
         const url = this.baseUrl + '/api/user'
+        return this.http.get(url).pipe(map(
+            (response: Response) => {
+                return response.json();
+            }
+            ));
+    }
+
+    findUserById(uid: string) {
+        const url = this.baseUrl + '/api/user/' + uid;
         return this.http.get(url).pipe(map(
             (response: Response) => {
                 return response.json();

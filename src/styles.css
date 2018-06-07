@@ -56,3 +56,7 @@ body {
 .dropdown-menu{
 	margin-top: 0;
 }
+
+.sw-padding-left{
+	padding-left: 80px;
+}
