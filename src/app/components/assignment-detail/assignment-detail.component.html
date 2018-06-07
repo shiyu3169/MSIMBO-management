@@ -1,5 +1,10 @@
-<div class="container-fluid">
-	<br>
-	<a class="btn btn-outline-secondary" routerLink="/assignment"><i class="fas fa-chevron-left"></i></a>
+<div class="row">
+	<div class="col-1">
+		<div class='container'>
+			<a class="btn btn-outline-secondary" routerLink="/assignment"><i class="fas fa-chevron-left"></i></a>
+		</div>
+	</div>
+	<div class="col-11">
+		<iframe class="sw-doc" frameborder="0" [src]="this.santizerUrl(assignment.src)"></iframe>
+	</div>
 </div>
-<iframe class="sw-doc" width="100%" height="100%" frameborder="0" [src]="this.santizerUrl(assignment.src)"></iframe>

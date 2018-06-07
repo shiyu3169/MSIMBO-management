@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body {
 	padding-top: 56px;
-	padding-bottom: 70px;
+	padding-bottom:40px;
 }
 
 .sw-full-width{
@@ -26,23 +26,15 @@ body {
 	cursor: pointer;
 }
 
-body {
-    margin: 0;
-}
 
 .sw-doc {
 	width: 100%;
-	height: 100%;
-	position: fixed;
-	padding-left: 20%;
-	padding-bottom: 75px;
+	height: 85vh;
 }
 
 .sw-sheet {
 	width: 100%;
-	height: 100%;
-	position: fixed;
-	padding-bottom: 75px;
+	height: 85vh;
 }
 
 .dropdown:hover .dropdown-menu {
