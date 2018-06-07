@@ -3,6 +3,7 @@ import { AssignmentService } from '../../services/assignment.service.client';
 import { Assignment } from '../../models/assignment.model.client';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-assignment-detail',
   templateUrl: './assignment-detail.component.html',

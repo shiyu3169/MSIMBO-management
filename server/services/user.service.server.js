@@ -1,7 +1,7 @@
 module.exports = function (app) {
 
 	app.get("/api/user", findUsers);
-    app.get("/api/user/:uid", findUserById);
+  app.get("/api/user/:uid", findUserById);
 
 
 	var users = [

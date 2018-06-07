@@ -16,10 +16,12 @@ import { AssignmentListComponent } from './components/assignment-list/assignment
 import { AssignmentDetailComponent } from './components/assignment-detail/assignment-detail.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { WikiComponent } from './components/wiki/wiki.component';
+import { WikiDetailComponent } from './components/wiki-detail/wiki-detail.component';
 // Services
 import { UserService } from './services/user.service.client';
 import { AssignmentService } from './services/assignment.service.client';
-import { WikiComponent } from './components/wiki/wiki.component';
+import { WikiService } from './services/wiki.service.client';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { WikiComponent } from './components/wiki/wiki.component';
     AssignmentDetailComponent,
     FooterComponent,
     NavbarComponent,
-    WikiComponent
+    WikiComponent,
+    WikiDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,7 @@ import { WikiComponent } from './components/wiki/wiki.component';
     FormsModule,
     HttpModule
   ],
-  providers: [UserService, AssignmentService],
+  providers: [UserService, AssignmentService, WikiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

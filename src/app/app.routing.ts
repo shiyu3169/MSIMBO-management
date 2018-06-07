@@ -11,6 +11,7 @@ import { AboutComponent } from './components/about/about.component';
 import { AssignmentListComponent } from './components/assignment-list/assignment-list.component';
 import { AssignmentDetailComponent } from './components/assignment-detail/assignment-detail.component';
 import { WikiComponent } from './components/wiki/wiki.component';
+import { WikiDetailComponent } from './components/wiki-detail/wiki-detail.component';
 
 const APP_ROUTES : Routes = [
   { path : '', component : HomeComponent},
@@ -22,7 +23,8 @@ const APP_ROUTES : Routes = [
   { path : 'about', component : AboutComponent},
   { path : 'assignment', component : AssignmentListComponent},
   { path : 'assignment/:aid', component : AssignmentDetailComponent},
-  { path : 'wiki', component : WikiComponent}
+  { path : 'wiki', component : WikiComponent},
+  { path : 'wiki/:wid', component : WikiDetailComponent}
 ];
 
 // Export the routes as module providers
