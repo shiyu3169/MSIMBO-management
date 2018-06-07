@@ -2,17 +2,12 @@
 <div class="container">
     <h3 class="sw-red">Our Students</h3>
     <!-- search bar -->
-    <div class="input-group">
-        <input class="form-control form-control-lg" type="text" name="inputValue" id="inputValue" placeholder="Filter Students...">
-        <div class="input-group-append">
-            <button class="btn btn-info btn-lg">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-    </div>
+
+    <input class="form-control form-control-lg" type="text" name="inputName" placeholder="Seaching Students..." [(ngModel)]="inputName" (input)="filterUser()">
+
     <!-- Students -->
     <ul class="list-group list-group-flush">
-        <li *ngFor="let user of users" class="list-group-item">
+        <li *ngFor="let user of users" class="list-group-item sw-filter">
             <div *ngIf="!user.admin">
                 <div  class="row">
                     <div class="col-3">
@@ -22,7 +17,7 @@
                     <div class="col-9">
                         <p>{{user.bio}}</p>
                         <ul class="float-right">
-                            <li class="list-inline-item"><a href="#" class="sw-dark"><i class="fas fa-user fa-lg"></i></a></li>
+                            <li class="list-inline-item"><a routerLink="/user/{{user._id}}" class="sw-dark"><i class="fas fa-user fa-lg"></i></a></li>
                             <li class="list-inline-item"><a href="#" class="sw-dark"><i class="fab fa-linkedin fa-lg"></i></a></li>
                             <li class="list-inline-item"><a href="#" class="sw-dark"><i class="fab fa-github fa-lg"></i></a></li>
                         </ul>

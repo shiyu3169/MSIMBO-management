@@ -10,6 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class WikiComponent implements OnInit {
 
+	inputName: string;
 	wikis: Wiki[];
 
 	constructor(private wikiService: WikiService) { }
@@ -21,5 +22,20 @@ export class WikiComponent implements OnInit {
 			}
 		);
 	}
+
+	filterWiki(){
+        let tr = document.querySelectorAll('tr.sw-wiki');
+        // console.log(tr);
+        for(let i=0;i<tr.length;i++){
+            let a = tr[i].querySelector('a');
+            // console.log(a);
+            let item = <HTMLElement>tr[i];
+            if(a && a.innerHTML.toUpperCase().includes(this.inputName.toUpperCase())){
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        }
+    }
 
 }
