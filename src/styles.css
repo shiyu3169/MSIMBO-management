@@ -52,3 +52,7 @@ body {
 .sw-padding-left{
 	padding-left: 80px;
 }
+
+a:hover {
+    text-decoration: none;
+}
