@@ -11,8 +11,26 @@ import { User } from '../../models/user.model.client';
 export class ProfileComponent implements OnInit {
 
 	uid: string;
-	user: User;
-
+	user: User ={
+		_id: "",
+		username: "",
+		password: "",
+		firstName: "",
+		lastName: "",
+		email: '',
+		image: '',
+		admin: false,
+		bio: '',
+		github: '',
+		linkedin: '',
+		project: '',
+		grades: []
+	};
+	fristName: string;
+	lastName: string;
+	email: string;
+	bio: string ="";
+	
 	constructor(private userService: UserService ,private activatedRoute: ActivatedRoute) { }
 
 	ngOnInit() {
@@ -22,11 +40,14 @@ export class ProfileComponent implements OnInit {
 				this.userService.findUserById(this.uid).subscribe(
 					(user: User) => {
 						this.user = user;
+						this.fristName = this.user.firstName;
+						this.lastName = this.user.lastName;
+						this.email = this.user.email;
+						this.bio = this.user.bio;
 					}
-					)
+				);
 			}
-			)
+		);
 	}
-
 
 }

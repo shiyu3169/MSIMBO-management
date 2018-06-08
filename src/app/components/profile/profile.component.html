@@ -6,18 +6,15 @@
 				<div class="text-center">
 					<img width="40%" src="{{user.image}}">
 					<br>
-					<button class="btn btn-info">Update Image</button>
+					<button class="btn btn-info" data-toggle="modal" data-target="#imageModal">Update Image</button>
 				</div>
 			</div>
 			<br>
 			<div class="sw-padding-left">
 				<h5>Name: {{user.firstName}} {{user.lastName}}</h5>
-				<h5>Username: {{user.username}}</h5>
 				<h5>Email: {{user.email}}</h5>
-				<h5>LinkedIn: {{user.username}}</h5>
-				<h5>Github: {{user.email}}</h5>
 			</div>
-			<button class="btn btn-info btn-block">Edit Profile</button>
+			<button class="btn btn-info btn-block" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
 		</div>
 	</div>
 	<div class="col-9">
@@ -28,7 +25,127 @@
 			<br>
 			<h5>Biography</h5>
 			<p>{{user.bio}}</p>
-			<button class="btn btn-info float-right">Edit Biography</button>
+			<button class="btn btn-info float-right" data-toggle="modal" data-target="#bioModal">Edit Biography</button>
+			<br>
+			<br>
+			<h6><i class="fas fa-project-diagram"></i> Project: <a href="{{user.project}}" target="_blank">{{user.project}}</a></h6>
+			<h6><i class="fab fa-linkedin fa-lg"></i> LinkedIn: <a href="{{user.linkedin}}" target="_blank">{{user.linkedin}}</a></h6>
+			<h6><i class="fab fa-github fa-lg"></i> GitHub: <a href="{{user.github}}" target="_blank">{{user.github}}</a></h6>
+			<br>
+			<button class="btn btn-info" data-toggle="modal" data-target="#linkModal">Edit Links</button>
+		</div>
+		<br>
+		<div class="container-fluid">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Grade</th>	
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let grade of user.grades">
+						<td>{{grade.name}}</td>
+						<td>{{grade.score}}</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
+</div>
+
+<!-- Image Modals -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Upload New Image</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+        	<div class="form-group">
+          		<input class="form-control" type="file" name="image">
+         	</div>
+          <button class="btn btn-success btn-block">Upload</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Profile Modals -->
+<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Profile</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+        	<div class="form-group">
+        		<label for="firstName">First Name</label>
+          		<input class="form-control" type="text" name="firstName" ngModel={{user.firstName}} #firstName=ngModel>
+         	</div>
+         	<div class="form-group">
+        		<label for="lastName">Last Name</label>
+          		<input class="form-control" type="text" name="lastName" ngModel={{user.lastName}} #lastName=ngModel>
+         	</div>
+         	<div class="form-group">
+         		<label for="email">Email</label>
+          		<input class="form-control" type="email" name="email" ngModel={{user.email}} #email=ngModel>
+         	</div>
+          <button class="btn btn-success btn-block">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bio Modals -->
+<div class="modal fade" id="bioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Biography</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+        	<div class="form-group">
+	        	<textarea class="form-control" type="text" name="bio" [(ngModel)]="bio" rows="5" maxlength="1000">
+	        	</textarea>
+	        	<span class="float-right">{{bio.length}}/1000</span>
+        	</div>
+          	<button class="btn btn-success btn-block">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Link Modals -->
+<div class="modal fade" id="linkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Links</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+        	<div class="form-group">
+        		<label for="project">Project</label>
+          		<input class="form-control" type="text" name="project" ngModel={{user.project}} #project=ngModel>
+         	</div>
+         	<div class="form-group">
+        		<label for="linkedin">LinkedIn</label>
+          		<input class="form-control" type="text" name="linkedin" ngModel={{user.linkedin}} #linkedin=ngModel>
+         	</div>
+         	<div class="form-group">
+         		<label for="github">GitHub</label>
+          		<input class="form-control" type="text" name="github" ngModel={{user.github}} #github=ngModel>
+         	</div>
+          <button class="btn btn-success btn-block">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

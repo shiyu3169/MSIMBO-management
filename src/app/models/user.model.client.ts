@@ -8,4 +8,11 @@ export class User {
 	image: string;
 	admin: boolean;
 	bio: string;
+	github: string;
+	linkedin: string;
+	project: string;
+	grades: {
+		name: string;
+		score: number;
+	}[];
 }
