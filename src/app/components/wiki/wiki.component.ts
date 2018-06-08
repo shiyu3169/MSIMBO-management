@@ -19,6 +19,7 @@ export class WikiComponent implements OnInit {
 		this.wikiService.findWikis().subscribe(
 			(assignments: Wiki[]) => {
 				this.wikis = assignments;
+				this.filterWiki();
 			}
 		);
 	}

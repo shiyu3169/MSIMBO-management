@@ -20,6 +20,7 @@ export class StudentListComponent implements OnInit {
         this.userService.findUsers().subscribe(
             (users:User[]) => {
                 this.users = users;
+                this.filterUser();
   			// console.log(this.users[1]);
           }
           );

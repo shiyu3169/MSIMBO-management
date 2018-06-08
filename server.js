@@ -3,6 +3,11 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const app = express();
+// var enforce = require('express-sslify');
+
+// Use enforce.HTTPS({ trustProtoHeader: true }) in case you are behind
+// a load balancer (e.g. Heroku). See further comments below
+// app.use(enforce.HTTPS());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,8 +46,17 @@ require("./server/app")(app);
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
-
+// app.get('*',function(req,res,next){
+//   if(req.headers['x-forwarded-proto']!='https')
+//     res.redirect('https://mypreferreddomain.com'+req.url)
+//   else
+//     next() /* Continue to other routes if we're not redirecting */
+// })
 
 
 // server.listen(port);
 server.listen( port , function() {console.log('Running on ' + app.get('port'));});
+
+// http.createServer(app).listen(app.get('port'), function() {
+//     console.log('Express server listening on port ' + app.get('port'));
+// });
