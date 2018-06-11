@@ -50,6 +50,7 @@ module.exports = function (app) {
         const image = req.file;
         let user = selectUserById(uid);
         user.image = '/assets/uploads/' + image.filename;
-        res.json(image);
+        var callbackUrl   = req.headers.origin + "/user/" + uid;
+        res.redirect(callbackUrl);
     }
 }
