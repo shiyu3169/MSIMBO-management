@@ -3,7 +3,7 @@ module.exports = function (app) {
     var multer = require('multer');
     var storage = multer.diskStorage({
         destination: function (req, file, cb) {
-            cb(null, 'assets/uploads')
+            cb(null, './dist/assets/uploads')
         },
         filename: function (req, file, cb) {
             cb(null, Date.now() + '.jpg') //Appending .jpg
@@ -59,6 +59,6 @@ module.exports = function (app) {
         const image = req.file;
         let user = selectUserById(uid);
         user.image = '/assets/uploads/' + image.filename;
-        res.json(user);
+        res.json(image.path);
     }
 }
