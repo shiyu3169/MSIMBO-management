@@ -1,16 +1,17 @@
 <div class="container-fluid">
-<table class="table table-striped table-hover">
-	<thead>
-		<tr>
-			<th>Assignment</th>
-			<th>Due Date</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let assignment of assignments">
-			<td><a routerLink="/assignment/{{assignment._id}}">{{assignment.name}}</a></td>
-			<td>{{assignment.due}}</td>
-		</tr>
-	</tbody>
-</table>
+	<p><em>Assignments are given every two weeks. After an assignment is given, You will have 15 days to finish it. The skills you practice on the assignments are meant to be used on a project of your own. Commit your work frequently to GitHub. When you are ready to submit each assignment, tag your last commit you wish to be graded on GitHub. </em></p>
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Assignment</th>
+				<th>Due Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let assignment of assignments">
+				<td><a routerLink="/assignment/{{assignment._id}}">{{assignment.name}}</a></td>
+				<td>{{assignment.due}}</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
