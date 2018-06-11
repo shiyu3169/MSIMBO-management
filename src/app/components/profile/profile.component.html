@@ -62,11 +62,11 @@
         <h5 class="modal-title">Upload New Image</h5>
       </div>
       <div class="modal-body">
-        <form>
+        <form ngNoForm  action="{{baseUrl}}/api/user/{{user._id}}/upload" method="post" enctype="multipart/form-data">
         	<div class="form-group">
           		<input class="form-control" type="file" name="image">
          	</div>
-          <button class="btn btn-success btn-block">Upload</button>
+          <button type="submit" class="btn btn-success btn-block">Upload</button>
         </form>
       </div>
     </div>

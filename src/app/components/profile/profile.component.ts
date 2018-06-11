@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service.client';
 import { User } from '../../models/user.model.client';
+declare var jQuery: any;
+import { environment } from '../../../environments/environment';
 
 @Component({
 	selector: 'app-profile',
@@ -30,6 +32,7 @@ export class ProfileComponent implements OnInit {
 	lastName: string;
 	email: string;
 	bio: string ="";
+	baseUrl: string;
 	
 	constructor(private userService: UserService ,private activatedRoute: ActivatedRoute) { }
 
@@ -37,6 +40,7 @@ export class ProfileComponent implements OnInit {
 		this.activatedRoute.params.subscribe(
 			params => {
 				this.uid = params['uid'];
+				this.baseUrl = environment.baseUrl;
 				this.userService.findUserById(this.uid).subscribe(
 					(user: User) => {
 						this.user = user;
@@ -49,5 +53,11 @@ export class ProfileComponent implements OnInit {
 			}
 		);
 	}
+
+
+	// upload(){
+		
+	// 	jQuery('#imageModal').modal('hide');
+	// }
 
 }
