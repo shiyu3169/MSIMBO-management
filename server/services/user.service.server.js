@@ -2,16 +2,6 @@ module.exports = function (app) {
 
     var multer = require('multer');
     var upload = multer({ dest: './dist/assets/uploads' });
-    // var storage = multer.diskStorage({
-    //     destination: function (req, file, cb) {
-    //         cb(null, './dist/assets/uploads')
-    //     },
-    //     filename: function (req, file, cb) {
-    //         cb(null, Date.now() + '') //Appending .jpg
-    //     }
-    // });
-
-    // var upload = multer({ storage: storage });
 
 	app.get("/api/user", findUsers);
     app.get("/api/user/:uid", findUserById);
