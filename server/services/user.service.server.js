@@ -3,7 +3,7 @@ module.exports = function (app) {
     var multer = require('multer');
     var storage = multer.diskStorage({
         destination: function (req, file, cb) {
-            cb(null, __dirname + '/assets/uploads')
+            cb(null, 'assets/uploads')
         },
         filename: function (req, file, cb) {
             cb(null, Date.now() + '.jpg') //Appending .jpg
