@@ -1,11 +1,10 @@
 var mongoose = require('mongoose');
 
-var AssignmentSchema = mongoose.Schema({
+var WikiSchema = mongoose.Schema({
 	_id: mongoose.Schema.Types.ObjectId,
 	name: String,
-	due: String,
 	src: String,
 	dateCreated: {type: Date, default: Date.now}
-}, {collection: 'assignment'});
+}, {collection: 'wiki'});
 
-module.exports = AssignmentSchema;
+module.exports = WikiSchema;
