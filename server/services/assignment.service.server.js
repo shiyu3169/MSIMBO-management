@@ -17,7 +17,7 @@ module.exports = function (app) {
 	}
 
 	function findAssignemntBy(req, res) {
-		const a = req.params["aid"];
+		const aid = req.params["aid"];
 		assignmentModel.findAssignemntById(aid).then(
 			(assignment) => {
 				res.json(assignment);
