@@ -3,7 +3,7 @@ module.exports = function (app) {
 	const assignmentModel = require("../models/assignment/assignment.model.server")
 
 	app.get("/api/assignment", findAssignments);
-	app.get("/api/assignment/:aid", findAssignemntBy);
+	app.get("/api/assignment/:aid", findAssignemntById);
 
 
 	
@@ -16,7 +16,7 @@ module.exports = function (app) {
 		);
 	}
 
-	function findAssignemntBy(req, res) {
+	function findAssignemntById(req, res) {
 		const aid = req.params["aid"];
 		assignmentModel.findAssignemntById(aid).then(
 			(assignment) => {
