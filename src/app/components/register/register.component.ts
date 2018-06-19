@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
     verifyPassword: string;
     usernameError: boolean;
     passwordError: boolean;
+    successFlag : boolean
 
     constructor(private userService: UserService, private router: Router) { }
 
@@ -50,14 +51,20 @@ export class RegisterComponent implements OnInit {
                         this.userService.createUser(newUser)
                         .subscribe(
                             (newU: User) => {
-                                this.router.navigate(['user', newU._id]);
+                                this.usernameError = false;
+                                this.passwordError = false;
+                                this.successFlag = true;
+                                this.username = "";
+                                this.password = "";
                             }
                             ,
                             (error: any) => {
                                 this.usernameError = true;
+                                this.successFlag = false;
                             });
                     } else {
                         this.usernameError = true;
+                        this.successFlag = false;
                     }
                 }
                 );
@@ -65,6 +72,9 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.usernameError = false;
+        this.passwordError = false;
+        this.successFlag = false;
     }
 
 }

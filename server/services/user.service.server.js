@@ -2,6 +2,12 @@ module.exports = function (app) {
 
     const userModel = require('../models/user/user.model.server');
 
+    const passport = require('passport');
+    let LocalStrategy = require('passport-local').Strategy;
+
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
     const multer = require('multer');
     const upload = multer({ dest: './dist/assets/uploads' });
 
@@ -9,6 +15,41 @@ module.exports = function (app) {
 	app.get("/api/user", findUsers);
     app.get("/api/user/:uid", findUserById);
     app.post("/api/user/:uid/upload", upload.single('image'), uploadImage);
+    app.post('/api/login', passport.authenticate('local'), login);
+
+    passport.use(new LocalStrategy(localStrategy));
+
+    function localStrategy(username, password, done) {
+        userModel.findUserByCredentials(username, password).then(
+            (user) => {
+                if(user) {
+                    return done(null, user);
+                } else {
+                    return done(null, false);
+                }
+            }
+        )
+   }
+
+   function login(req, res) {
+        res.json(req.user);
+   }
+
+
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        userModel.findUserById(user._id).then(
+            (user) => {
+                done(null, user);
+            },
+            (err) => {
+                done(err, null);
+            }
+        )
+    }
     
     function createUser(req, res) {
         const newUser = req.body;
@@ -64,4 +105,5 @@ module.exports = function (app) {
         const callbackUrl   = req.headers.origin + "/user/" + uid;
         res.redirect(callbackUrl);
     }
+
 }

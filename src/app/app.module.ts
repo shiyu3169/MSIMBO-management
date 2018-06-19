@@ -18,11 +18,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { WikiComponent } from './components/wiki/wiki.component';
 import { WikiDetailComponent } from './components/wiki-detail/wiki-detail.component';
+import { RegisterComponent } from './components/register/register.component';
+
 // Services
 import { UserService } from './services/user.service.client';
 import { AssignmentService } from './services/assignment.service.client';
 import { WikiService } from './services/wiki.service.client';
-import { RegisterComponent } from './components/register/register.component';
+import { SharedService } from './services/shared.service.client'
 
 @NgModule({
   declarations: [
@@ -48,7 +50,7 @@ import { RegisterComponent } from './components/register/register.component';
     FormsModule,
     HttpModule
   ],
-  providers: [UserService, AssignmentService, WikiService],
+  providers: [UserService, AssignmentService, WikiService, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

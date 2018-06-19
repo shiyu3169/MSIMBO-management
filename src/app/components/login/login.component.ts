@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service.client';
+import { SharedService } from '../../services/shared.service.client'
 import {User} from '../../models/user.model.client';
 import {NgForm} from '@angular/forms';
 declare var jQuery: any;
@@ -15,33 +16,34 @@ export class LoginComponent implements OnInit {
 
 	@ViewChild('f') loginForm: NgForm;
 
-	username: String;
-	password: String;
+	username: string;
+	password: string;
 	errorFlag: boolean;
 
-	constructor(private userService: UserService, private router: Router) { }
+	constructor(private userService: UserService, private router: Router, private sharedService: SharedService) { }
 
 	
 
 	ngOnInit() {
+		this.errorFlag = false;
 	}
 
 	login() {
 		this.username = this.loginForm.value.username;
     	this.password = this.loginForm.value.password;
-
-    	this.userService.findUserByCredentials(this.username, this.password).subscribe(
+    	this.userService.login(this.username, this.password).subscribe(
     		(user: User) => {
     			if(!user) {
     				this.errorFlag = true;
     			} else {
     				this.errorFlag = false;
-          			this.router.navigate(['/user/', user._id])
-          		};
+    				this.sharedService.user = user;
+    				this.router.navigate(['/user']);
+    			}
     		},
-    		(error: any) => {
-            	this.errorFlag = true;
-          	}
+    		(err: any) => {
+    			this.errorFlag = true;
+    		}
     	);
 	}
 

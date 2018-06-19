@@ -1,6 +1,7 @@
 <div class="container">
 	<div *ngIf="usernameError" class="alert alert-danger" >Username was taken!</div>
 	<div *ngIf="passwordError" class="alert alert-danger" >Two passwords are not match!</div>
+	<div *ngIf="successFlag" class="alert alert-success" >Account is created successfully!</div>
 	<h1>Register</h1>
 	<form (ngSubmit)="register()" #f="ngForm">
 		<div class="form-group">

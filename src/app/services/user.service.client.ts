@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, RequestOptions } from '@angular/http';
 import { environment } from '../../environments/environment';
 import { map } from "rxjs/operators";
 import { User } from '../models/user.model.client'
@@ -8,10 +8,11 @@ import { User } from '../models/user.model.client'
 @Injectable()
 export class UserService {
 	baseUrl = environment.baseUrl;
+    options: RequestOptions = new RequestOptions();
 
 	constructor(private http: Http) {}
 
-	findUserByCredentials(username: String, password: String) {
+	findUserByCredentials(username: string, password: string) {
         const url =  this.baseUrl + '/api/user?username=' + username + '&password=' + password;
         return this.http.get(url).pipe(map(
         	(response: Response) => {
@@ -20,7 +21,7 @@ export class UserService {
             ));
     }
 
-    findUserByUsername(username: String) {
+    findUserByUsername(username: string) {
         const url =  this.baseUrl + '/api/user?username=' + username;
         return this.http.get(url).pipe(map(
             (response: Response) => {
@@ -54,5 +55,33 @@ export class UserService {
                 return res.json();
             }
         ))
+    }
+
+    // register(username: string, password: string) {
+    //     const url = this.baseUrl + '/api/register';
+    //     const credentials = {
+    //         username: username,
+    //         password: password
+    //     };
+    //     this.options.withCredentials = true;
+    //     return this.http.post(url, credentials, this.options).pipe(map(
+    //         (response: Response) => {
+    //             return response.json();
+    //         }
+    //     ));
+    // }
+
+    login(username: string, password: string) {
+        const url = this.baseUrl + '/api/login';
+        const credentials = {
+            username: username,
+            password: password
+        };
+        this.options.withCredentials = true;
+        return this.http.post(url, credentials, this.options).pipe(map(
+            (response: Response) => {
+                return response.json();
+            }
+        ));
     }
 }
