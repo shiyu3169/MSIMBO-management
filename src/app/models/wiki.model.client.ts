@@ -1,5 +1,5 @@
 export class Wiki {
-	_id: string;
+	_id?: string;
 	name: string;
 	src: string;
 }

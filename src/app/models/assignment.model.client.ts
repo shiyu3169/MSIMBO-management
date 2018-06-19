@@ -1,5 +1,5 @@
 export class Assignment {
-	_id: string;
+	_id?: string;
 	name: string;
 	due: string;
 	src: string;
