@@ -20,6 +20,15 @@ export class UserService {
             ));
     }
 
+    findUserByUsername(username: String) {
+        const url =  this.baseUrl + '/api/user?username=' + username;
+        return this.http.get(url).pipe(map(
+            (response: Response) => {
+                return response.json();
+            }
+            ));
+    }
+
     findUsers() {
         const url = this.baseUrl + '/api/user'
         return this.http.get(url).pipe(map(
@@ -36,5 +45,14 @@ export class UserService {
                 return response.json();
             }
         ));
+    }
+
+    createUser(user: User) {
+        const url = this.baseUrl + '/api/user';
+        return this.http.post(url, user).pipe(map(
+            (res: Response) => {
+                return res.json();
+            }
+        ))
     }
 }

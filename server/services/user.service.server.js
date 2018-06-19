@@ -1,18 +1,27 @@
 module.exports = function (app) {
 
-    var userModel = require('../models/user/user.model.server');
+    const userModel = require('../models/user/user.model.server');
 
-    var multer = require('multer');
-    var upload = multer({ dest: './dist/assets/uploads' });
+    const multer = require('multer');
+    const upload = multer({ dest: './dist/assets/uploads' });
 
+    app.post("/api/user", createUser)
 	app.get("/api/user", findUsers);
     app.get("/api/user/:uid", findUserById);
-    app.post ("/api/user/:uid/upload", upload.single('image'), uploadImage);
+    app.post("/api/user/:uid/upload", upload.single('image'), uploadImage);
     
+    function createUser(req, res) {
+        const newUser = req.body;
+        userModel.createUser(newUser).then(
+            (user) => {
+                res.json(user);
+            }
+        );
+    }
 
     function findUsers(req, res) {
-        var username = req.query['username'];
-        var password = req.query['password'];
+        const username = req.query['username'];
+        const password = req.query['password'];
         if(username && password) {
             userModel.findUserByCredentials(username, password).then(
                 (user) => {
@@ -52,7 +61,7 @@ module.exports = function (app) {
         userModel.updateUser(uid, user).then(
             () => {res.json(null)}
         );
-        var callbackUrl   = req.headers.origin + "/user/" + uid;
+        const callbackUrl   = req.headers.origin + "/user/" + uid;
         res.redirect(callbackUrl);
     }
 }

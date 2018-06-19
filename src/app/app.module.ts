@@ -22,6 +22,7 @@ import { WikiDetailComponent } from './components/wiki-detail/wiki-detail.compon
 import { UserService } from './services/user.service.client';
 import { AssignmentService } from './services/assignment.service.client';
 import { WikiService } from './services/wiki.service.client';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { WikiService } from './services/wiki.service.client';
     FooterComponent,
     NavbarComponent,
     WikiComponent,
-    WikiDetailComponent
+    WikiDetailComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

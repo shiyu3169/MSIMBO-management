@@ -12,10 +12,12 @@ import { AssignmentListComponent } from './components/assignment-list/assignment
 import { AssignmentDetailComponent } from './components/assignment-detail/assignment-detail.component';
 import { WikiComponent } from './components/wiki/wiki.component';
 import { WikiDetailComponent } from './components/wiki-detail/wiki-detail.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const APP_ROUTES : Routes = [
   { path : '', component : HomeComponent},
   { path : 'login', component : LoginComponent},
+  { path : 'register', component : RegisterComponent},
   { path : 'user/:uid', component : ProfileComponent},
   { path : 'curriculum', component : CurriculumComponent},
   { path : 'video', component : VideoComponent},

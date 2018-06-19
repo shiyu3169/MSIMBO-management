@@ -1,18 +1,14 @@
 export class User {
-	_id: string;
+	_id?: string;
 	username: string;
 	password: string;
 	firstName: string;
 	lastName: string;
 	email: string;
-	image: string;
-	admin: boolean;
-	bio: string;
-	github: string;
-	linkedin: string;
-	project: string;
-	grades: {
-		name: string;
-		score: number;
-	}[];
+	image?: string;
+	admin?: boolean;
+	bio?: string;
+	github?: string;
+	linkedin?: string;
+	project?: string;
 }

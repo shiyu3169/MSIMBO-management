@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
 
 	uid: string;
 	user: User ={
-		_id: "",
+		_id:"",
 		username: "",
 		password: "",
 		firstName: "",
@@ -25,8 +25,7 @@ export class ProfileComponent implements OnInit {
 		bio: '',
 		github: '',
 		linkedin: '',
-		project: '',
-		grades: []
+		project: ''
 	};
 	fristName: string;
 	lastName: string;
