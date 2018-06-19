@@ -18,6 +18,14 @@ body {
 	color: #ce0404;
 }
 
+.sw-white{
+	color: white;
+}
+
+.sw-bg-transparent{
+	background: transparent;
+}
+
 .sw-dark{
 	color: #3f3f3f;
 }

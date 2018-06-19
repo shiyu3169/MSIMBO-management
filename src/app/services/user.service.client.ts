@@ -84,4 +84,14 @@ export class UserService {
             }
         ));
     }
+
+    logout() {
+        const url = this.baseUrl + '/api/logout';
+        this.options.withCredentials = true;
+        return this.http.post(url, {}, this.options).pipe(map(
+            (res: Response) => {
+                return res;
+            }
+        ));
+    }
 }

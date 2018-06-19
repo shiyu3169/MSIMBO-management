@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service.client';
 import { SharedService } from '../../services/shared.service.client'
 import { User } from '../../models/user.model.client';
@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
 	linkedin: string;
 	project: string;
 	
-	constructor(private userService: UserService ,private activatedRoute: ActivatedRoute, private sharedService: SharedService) { }
+	constructor(private userService: UserService ,private activatedRoute: ActivatedRoute, private sharedService: SharedService, private router: Router) { }
 
 	ngOnInit() {
 		this.user = this.sharedService.user;
@@ -55,4 +55,13 @@ export class ProfileComponent implements OnInit {
 		
 	// 	jQuery('#imageModal').modal('hide');
 	// }
+
+	logout() {
+		this.userService.logout().subscribe(
+			(status) => {
+				this.sharedService.user = null;
+				this.router.navigate(['/']);
+			}
+		);
+	}
 }
