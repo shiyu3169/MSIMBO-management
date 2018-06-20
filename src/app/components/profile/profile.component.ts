@@ -40,6 +40,7 @@ export class ProfileComponent implements OnInit {
 	constructor(private userService: UserService ,private activatedRoute: ActivatedRoute, private sharedService: SharedService, private router: Router) { }
 
 	ngOnInit() {
+		this.baseUrl = environment.baseUrl;
 		this.user = this.sharedService.user;
 		this.fristName = this.user.firstName;
 		this.lastName = this.user.lastName;

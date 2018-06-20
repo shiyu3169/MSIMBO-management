@@ -112,13 +112,18 @@ module.exports = function (app) {
     function uploadImage(req, res) {
         const uid = req.params['uid'];
         const image = req.file;
-        let user = userModel.findUserById(uid);
-        user.image = '/assets/uploads/' + image.filename;
-        userModel.updateUser(uid, user).then(
-            () => {res.json(null)}
+        const callbackUrl   = req.headers.origin + "/user";
+        
+        userModel.findUserById(uid).then(
+            (user) => {
+                user.image = '/assets/uploads/' + image.filename;
+                userModel.updateUser(uid, user).then(
+                    (data) => {
+                        res.redirect(callbackUrl);
+                    }
+                );
+            }
         );
-        const callbackUrl   = req.headers.origin + "/user/" + uid;
-        res.redirect(callbackUrl);
     }
 
 }

@@ -17,7 +17,6 @@ module.exports = function (app) {
 		const wid = req.params['wid'];
 		wikiModel.findWikiById(wid).then(
 			(wiki) => {
-				console.log(wiki);
 				res.json(wiki);
 			}
 		)
