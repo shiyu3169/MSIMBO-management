@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
 	password: string = "";
 	errorFlag: boolean;
 
+
 	constructor(private userService: UserService, private router: Router, private sharedService: SharedService) { }
 
 	ngOnInit() {
