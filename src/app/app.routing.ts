@@ -13,20 +13,21 @@ import { AssignmentDetailComponent } from './components/assignment-detail/assign
 import { WikiComponent } from './components/wiki/wiki.component';
 import { WikiDetailComponent } from './components/wiki-detail/wiki-detail.component';
 import { RegisterComponent } from './components/register/register.component';
-
+import { AuthenticationService } from './services/authentication.service.client';
+import { AdminService } from './services/admin.service.client';
 const APP_ROUTES : Routes = [
   { path : '', component : HomeComponent},
   { path : 'login', component : LoginComponent},
-  { path : 'register', component : RegisterComponent},
-  { path : 'user', component : ProfileComponent},
-  { path : 'curriculum', component : CurriculumComponent},
-  { path : 'video', component : VideoComponent},
   { path : 'students', component : StudentListComponent},
   { path : 'about', component : AboutComponent},
-  { path : 'assignment', component : AssignmentListComponent},
-  { path : 'assignment/:aid', component : AssignmentDetailComponent},
-  { path : 'wiki', component : WikiComponent},
-  { path : 'wiki/:wid', component : WikiDetailComponent}
+  { path : 'curriculum', component : CurriculumComponent},
+  { path : 'user', component : ProfileComponent, canActivate: [AuthenticationService]},
+  { path : 'video', component : VideoComponent, canActivate: [AuthenticationService]},
+  { path : 'assignment', component : AssignmentListComponent, canActivate: [AuthenticationService]},
+  { path : 'assignment/:aid', component : AssignmentDetailComponent, canActivate: [AuthenticationService]},
+  { path : 'wiki', component : WikiComponent, canActivate: [AuthenticationService]},
+  { path : 'wiki/:wid', component : WikiDetailComponent, canActivate: [AuthenticationService]},
+  { path : 'register', component : RegisterComponent, canActivate: [AuthenticationService, AdminService]}
 ];
 
 // Export the routes as module providers

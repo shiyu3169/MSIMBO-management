@@ -13,7 +13,6 @@ declare var jQuery: any;
 export class NavbarComponent implements OnInit {
 
 	assignments: Assignment[];
-    //user: User;
 
     constructor(private assignmentService: AssignmentService, private sharedService: SharedService) { }
 
@@ -26,7 +25,6 @@ export class NavbarComponent implements OnInit {
                 this.assignments = assignments;
             }
         );
-        // this.user = this.sharedService.user;
     }
 
 }

@@ -17,6 +17,7 @@ module.exports = function (app) {
     app.post("/api/user/:uid/upload", upload.single('image'), uploadImage);
     app.post('/api/login', passport.authenticate('local'), login);
     app.post('/api/logout', logout);
+    app.post('/api/loggedIn', loggedIn);
 
     passport.use(new LocalStrategy(localStrategy));
 
@@ -32,13 +33,21 @@ module.exports = function (app) {
         )
    }
 
+    function loggedIn(req, res) {
+        if(req.isAuthenticated()) {
+            res.json(req.user);
+        } else {
+            res.send('0');
+        }
+    }
+
    function login(req, res) {
         res.json(req.user);
    }
 
    function logout(req, res) {
         req.logOut();
-        res.send(200);
+        res.sendStatus(200);
    }
 
 
