@@ -57,19 +57,14 @@ export class UserService {
         ))
     }
 
-    // register(username: string, password: string) {
-    //     const url = this.baseUrl + '/api/register';
-    //     const credentials = {
-    //         username: username,
-    //         password: password
-    //     };
-    //     this.options.withCredentials = true;
-    //     return this.http.post(url, credentials, this.options).pipe(map(
-    //         (response: Response) => {
-    //             return response.json();
-    //         }
-    //     ));
-    // }
+    updateUser(uid: string, user: User) {
+        const url = this.baseUrl + '/api/user/' + uid;
+        return this.http.put(url, user).pipe(map(
+            (res: Response) => {
+                return res.json();
+            }
+        ))
+    }
 
     login(username: string, password: string) {
         const url = this.baseUrl + '/api/login';

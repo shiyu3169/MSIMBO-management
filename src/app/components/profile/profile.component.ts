@@ -13,42 +13,30 @@ import { environment } from '../../../environments/environment';
 })
 export class ProfileComponent implements OnInit {
 
-	uid: string;
-	user: User ={
-		_id:"",
-		username: "",
-		password: "",
-		firstName: "",
-		lastName: "",
-		email: '',
-		image: '',
-		admin: false,
-		bio: '',
-		github: '',
-		linkedin: '',
-		project: ''
-	};
-	fristName: string;
-	lastName: string;
-	email: string;
-	bio: string ="";
+	// uid: string;
+	user: User;
+	// fristName: string;
+	// lastName: string;
+	// email: string;
+	// bio: string;
 	baseUrl: string;
-	github: string;
-	linkedin: string;
-	project: string;
+	// github: string;
+	// linkedin: string;
+	// project: string;
 	
-	constructor(private userService: UserService ,private activatedRoute: ActivatedRoute, private sharedService: SharedService, private router: Router) { }
+	constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private sharedService: SharedService, private router: Router) { }
 
 	ngOnInit() {
 		this.baseUrl = environment.baseUrl;
 		this.user = this.sharedService.user;
-		this.fristName = this.user.firstName;
-		this.lastName = this.user.lastName;
-		this.email = this.user.email;
-		this.bio = this.user.bio;
-		this.github = this.user.github;
-		this.linkedin = this.user.linkedin;
-		this.project = this.user.project;
+		// this.fristName = this.user.firstName;
+		// this.lastName = this.user.lastName;
+		// this.email = this.user.email;
+		// this.bio = this.user.bio;
+		// this.github = this.user.github;
+		// this.linkedin = this.user.linkedin;
+		// this.project = this.user.project;
+		// this.uid = this.user._id;
 	}
 
 
@@ -63,5 +51,20 @@ export class ProfileComponent implements OnInit {
 				this.router.navigate(['/']);
 			}
 		);
+	}
+
+	update() {
+		// this.user.firstName = this.fristName;
+		// this.user.lastName = this.lastName;
+		// this.user.email = this.email;
+		// this.user.bio = this.bio;
+		// this.user.github = this.github;
+		// this.user.linkedin = this.linkedin;
+		// this.user.project = this.project;
+		this.userService.updateUser(this.user._id, this.user).subscribe(
+			(res: any) => {
+					jQuery('*').modal('hide');
+			}
+		)
 	}
 }

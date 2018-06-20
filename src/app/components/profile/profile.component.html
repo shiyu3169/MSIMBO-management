@@ -82,18 +82,18 @@
         <h5 class="modal-title">Edit Profile</h5>
       </div>
       <div class="modal-body">
-        <form>
+        <form (ngSubmit)="update()">
         	<div class="form-group">
         		<label for="firstName">First Name</label>
-          		<input class="form-control" type="text" name="firstName" ngModel={{user.firstName}} #firstName=ngModel>
+          		<input class="form-control" type="text" name="firstName" [(ngModel)]="user.firstName">
          	</div>
          	<div class="form-group">
         		<label for="lastName">Last Name</label>
-          		<input class="form-control" type="text" name="lastName" ngModel={{user.lastName}} #lastName=ngModel>
+          		<input class="form-control" type="text" name="lastName" [(ngModel)]="user.lastName">
          	</div>
          	<div class="form-group">
          		<label for="email">Email</label>
-          		<input class="form-control" type="email" name="email" ngModel={{user.email}} #email=ngModel>
+          		<input class="form-control" type="email" name="email" [(ngModel)]="user.email">
          	</div>
           <button class="btn btn-success btn-block">Submit</button>
         </form>
@@ -110,11 +110,11 @@
         <h5 class="modal-title">Edit Biography</h5>
       </div>
       <div class="modal-body">
-        <form>
+        <form (ngSubmit)="update()">
         	<div class="form-group">
-	        	<textarea class="form-control" type="text" name="bio" [(ngModel)]="bio" rows="5" maxlength="1000">
+	        	<textarea class="form-control" type="text" name="bio" [(ngModel)]="user.bio" rows="5" maxlength="1000">
 	        	</textarea>
-	        	<span class="float-right">{{bio.length}}/1000</span>
+	        	<span class="float-right">{{user.bio.length}}/1000</span>
         	</div>
           	<button class="btn btn-success btn-block">Submit</button>
         </form>
@@ -131,18 +131,18 @@
         <h5 class="modal-title">Edit Links</h5>
       </div>
       <div class="modal-body">
-        <form>
+        <form (ngSubmit)="update()">
         	<div class="form-group">
         		<label for="project">Project</label>
-          		<input class="form-control" type="text" name="project" ngModel={{user.project}} #project=ngModel>
+          		<input class="form-control" type="text" name="project" [(ngModel)]="user.project">
          	</div>
          	<div class="form-group">
         		<label for="linkedin">LinkedIn</label>
-          		<input class="form-control" type="text" name="linkedin" ngModel={{user.linkedin}} #linkedin=ngModel>
+          		<input class="form-control" type="text" name="linkedin" [(ngModel)]="user.linkedin">
          	</div>
          	<div class="form-group">
          		<label for="github">GitHub</label>
-          		<input class="form-control" type="text" name="github" ngModel={{user.github}} #github=ngModel>
+          		<input class="form-control" type="text" name="github" [(ngModel)]="user.github">
          	</div>
           <button class="btn btn-success btn-block">Submit</button>
         </form>

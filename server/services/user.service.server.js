@@ -18,6 +18,7 @@ module.exports = function (app) {
     app.post('/api/login', passport.authenticate('local'), login);
     app.post('/api/logout', logout);
     app.post('/api/loggedIn', loggedIn);
+    app.put('/api/user/:uid', updateuser);
 
     passport.use(new LocalStrategy(localStrategy));
 
@@ -126,4 +127,13 @@ module.exports = function (app) {
         );
     }
 
+    function updateuser(req, res) {
+        const uid = req.params['uid'];
+        var user = req.body
+        userModel.updateUser(uid, user).then(
+            (data) => {
+                res.send(data);
+            }
+        )
+    }
 }
