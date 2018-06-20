@@ -30,7 +30,7 @@ body {
 
 .sw-btn{
 	cursor: pointer;
-	padding-right: 20px;
+	margin-right: 20px;
 }
 
 
@@ -62,4 +62,8 @@ body {
 
 a:hover {
     text-decoration: none;
+}
+
+.sw-margin-left{
+	margin-left: 10px;
 }

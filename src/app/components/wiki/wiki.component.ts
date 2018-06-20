@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { WikiService } from '../../services/wiki.service.client';
 import { Wiki } from '../../models/wiki.model.client';
 import { NgForm } from '@angular/forms';
+import { SharedService } from '../../services/shared.service.client';
 
 @Component({
 	selector: 'app-wiki',
@@ -13,7 +14,7 @@ export class WikiComponent implements OnInit {
 	inputName: string;
 	wikis: Wiki[];
 
-	constructor(private wikiService: WikiService) { }
+	constructor(private wikiService: WikiService, public sharedService: SharedService) { }
 
 	ngOnInit() {
 		this.wikiService.findWikis().subscribe(
