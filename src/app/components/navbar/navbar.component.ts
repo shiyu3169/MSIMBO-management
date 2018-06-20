@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
 
 	assignments: Assignment[];
 
-    constructor(private assignmentService: AssignmentService, private sharedService: SharedService) { }
+    constructor(private assignmentService: AssignmentService, public sharedService: SharedService) { }
 
     ngOnInit() {
         jQuery(document).on('click',function(){
