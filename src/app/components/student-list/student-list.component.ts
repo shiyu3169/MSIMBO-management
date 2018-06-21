@@ -12,31 +12,16 @@ export class StudentListComponent implements OnInit {
 
     users: User[];
 
-    inputName: string;
+    inputName: string = "";
 
     constructor(private userService: UserService) { }
 
     ngOnInit() {
+        this.inputName = "";
         this.userService.findUsers().subscribe(
             (users:User[]) => {
                 this.users = users;
-                this.filterUser();
-  			// console.log(this.users[1]);
           }
           );
-    }
-
-    filterUser(){
-        let li = document.querySelectorAll('li.sw-filter');
-        // console.log(li);
-        for(let i=0;i<li.length;i++){
-            let a = li[i].querySelector('h4');
-            let item = <HTMLElement>li[i];
-            if(a && a.innerHTML.toUpperCase().includes(this.inputName.toUpperCase())){
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        }
     }
 }

@@ -8,7 +8,7 @@
 				<th>Due Date</th>
 				<th *ngIf="sharedService.user && sharedService.user.admin">
 					<div class="float-right">
-					<button class="btn btn-outline-primary" data-toggle="modal" data-target="#newModal"><i class="fas fa-plus fa-lg"></i></button>
+					<button (click)="ngOnInit()" class="btn btn-outline-primary" data-toggle="modal" data-target="#newModal"><i class="fas fa-plus fa-lg"></i></button>
 					</div>
 				</th>
 			</tr>
@@ -20,8 +20,8 @@
 				<td>{{assignment.due}}</td>
 				<td *ngIf="sharedService.user && sharedService.user.admin">
 					<div class="float-right">
-						<button class="btn btn-outline-warning sw-margin-left" data-toggle="modal" data-target="#editModal"><i class="fas fa-edit fa-lg"></i></button>
-						<button class="btn btn-outline-danger sw-margin-left" data-toggle="modal" data-target="#removeModal"><i class="fas fa-minus fa-lg"></i></button>
+						<button (click)="select(assignment)" class="btn btn-outline-warning sw-margin-left" data-toggle="modal" data-target="#editModal"><i class="fas fa-edit fa-lg"></i></button>
+						<button (click)="select(assignment)" class="btn btn-outline-danger sw-margin-left" data-toggle="modal" data-target="#removeModal"><i class="fas fa-minus fa-lg"></i></button>
 					</div>	
 				</td>
 				<!-- Edit Modals -->
@@ -35,18 +35,18 @@
 					    </button>
 				      </div>
 				      <div class="modal-body">
-				        <form (ngSubmit)="update(assignment)">
+				        <form (ngSubmit)="update()">
 				        	<div class="form-group">
 				        		<label for="name">Name</label>
-				          		<input class="form-control" type="text" name="name" [(ngModel)]="assignment.name">
+				          		<input class="form-control" type="text" name="name" [(ngModel)]="name">
 				         	</div>
 				         	<div class="form-group">
 				        		<label for="src">Source</label>
-				          		<input class="form-control" type="text" name="src" [(ngModel)]="assignment.src">
+				          		<input class="form-control" type="text" name="src" [(ngModel)]="src">
 				         	</div>
 				         	<div class="form-group">
 				        		<label for="due">Due Date</label>
-				          		<input class="form-control" type="text" name="due" [(ngModel)]="assignment.due">
+				          		<input class="form-control" type="text" name="due" [(ngModel)]="due">
 				         	</div>
 				          <button class="btn btn-success btn-block">Submit</button>
 				        </form>
@@ -65,11 +65,11 @@
 					        </button>
 					      </div>
 					      <div class="modal-body">
-					        Are you sure to delete {{assignment.name}}
+					        Are you sure to delete {{selectedASS.name}}
 					      </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					        <button type="button" (click)="remove(assignemnt)" class="btn btn-danger">Delete</button>
+					        <button type="button" (click)="remove()" class="btn btn-danger">Delete</button>
 					      </div>
 					    </div>
 					</div>

@@ -13,13 +13,22 @@ declare var jQuery: any;
 export class AssignmentListComponent implements OnInit {
 
 	assignments: Assignment[];
-  name: string;
-  src: string;
-  due: string;
+  name: string ="";
+  src: string = "";
+  due: string = "";
+
+  selectedASS: Assignment = {
+        name: "",
+        src: "",
+        due: ""
+    };
 
   	constructor(private assignmentService: AssignmentService, public sharedService: SharedService) { }
 
   	ngOnInit() {
+      this.name ="";
+      this.src = "";
+      this.due = "";
   		this.assignmentService.findAssignments().subscribe(
   			(assignments: Assignment[]) => {
   				this.assignments = assignments;
@@ -27,12 +36,25 @@ export class AssignmentListComponent implements OnInit {
   		);
   	}
 
-    update(assignment: Assignment) {
-        jQuery('#editModal').modal('hide');
+    update() {
+        this.selectedASS.name = this.name;
+        this.selectedASS.src = this.src;
+        this.selectedASS.due = this.due;
+        this.assignmentService.updateAssignment(this.selectedASS._id, this.selectedASS).subscribe(
+            (res: any) => {
+                jQuery('#editModal').modal('hide');
+                this.ngOnInit();
+            }
+        );
     }
 
-    remove(assignment:Assignment) {
-        jQuery('#removeModal').modal('hide');
+    remove() {
+        this.assignmentService.deleteAssignment(this.selectedASS._id).subscribe(
+            (res: any) => {
+                jQuery('#removeModal').modal('hide');
+                this.ngOnInit();
+            }
+        );
     }
 
     create() {
@@ -41,7 +63,18 @@ export class AssignmentListComponent implements OnInit {
           src: this.src,
           due: this.due
         }
-        jQuery('#newModal').modal('hide');
+        this.assignmentService.createAssignment(newAss).subscribe(
+            (res: any) => {
+                jQuery('#newModal').modal('hide');
+                this.ngOnInit();
+            }
+        )
     }
 
+    select(assignment: Assignment) {
+      this.selectedASS = assignment;
+      this.name = assignment.name;
+      this.src = assignment.src;
+      this.due = assignment.due;
+    }
 }

@@ -44,24 +44,18 @@ export class RegisterComponent implements OnInit {
                         };
                         this.userService.createUser(newUser)
                         .subscribe(
-                            (newU: User) => {
+                            (res: any) => {
                                 this.usernameError = false;
                                 this.passwordError = false;
                                 this.successFlag = true;
-                                this.username = "";
-                                this.password = "";
-                            }
-                            ,
-                            (error: any) => {
-                                this.usernameError = true;
-                                this.successFlag = false;
+                                this.init();
                             });
                     } else {
                         this.usernameError = true;
                         this.successFlag = false;
                     }
                 }
-                );
+            );
         }
     }
 
@@ -69,6 +63,12 @@ export class RegisterComponent implements OnInit {
         this.usernameError = false;
         this.passwordError = false;
         this.successFlag = false;
+    }
+
+    init() {
+        this.username = "";
+        this.password = "";
+        this.verifyPassword = "";
     }
 
 }

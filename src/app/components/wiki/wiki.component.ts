@@ -14,9 +14,11 @@ export class WikiComponent implements OnInit {
 
 	inputName: string;
 	wikis: Wiki[];
-	name: string;
-	src: string;
-    newWiki: Wiki = {
+
+	name: string = "";
+	src: string = "";
+
+    selectedWiki: Wiki = {
         name: "",
         src: ""
     };
@@ -25,6 +27,8 @@ export class WikiComponent implements OnInit {
 
 	ngOnInit() {
         this.inputName = "";
+        this.name = "";
+        this.src = "";
 		this.wikiService.findWikis().subscribe(
 			(wikis: Wiki[]) => {
 				this.wikis = wikis;
@@ -32,16 +36,19 @@ export class WikiComponent implements OnInit {
 		);
 	}
 
-    update(wiki: Wiki) {
-        this.wikiService.updateWiki(wiki._id, wiki).subscribe(
+    update() {
+        this.selectedWiki.name = this.name;
+        this.selectedWiki.src = this.src;
+        this.wikiService.updateWiki(this.selectedWiki._id, this.selectedWiki).subscribe(
             (res: any) => {
                 jQuery('#editModal').modal('hide');
+                this.ngOnInit();
             }
         );
     }
 
-    remove(wiki: Wiki) {
-        this.wikiService.deleteWiki(wiki._id).subscribe(
+    remove() {
+        this.wikiService.deleteWiki(this.selectedWiki._id).subscribe(
             (res: any) => {
                 jQuery('#removeModal').modal('hide');
                 this.ngOnInit();
@@ -62,8 +69,10 @@ export class WikiComponent implements OnInit {
         )
     }
 
-    init(wiki) {
-        this.newWiki = wiki;
+    select(wiki) {
+        this.selectedWiki = wiki;
+        this.name = wiki.name;
+        this.src = wiki.src;
     }
 
 }

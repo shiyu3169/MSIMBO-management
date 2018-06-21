@@ -3,12 +3,12 @@
     <h3 class="sw-red">Our Students</h3>
     <!-- search bar -->
 
-    <input class="form-control form-control-lg" type="text" name="inputName" placeholder="Seaching Students..." [(ngModel)]="inputName" (input)="filterUser()">
+    <input class="form-control form-control-lg" type="text" name="inputName" placeholder="Seaching Students..." [(ngModel)]="inputName">
 
     <!-- Students -->
     <ul class="list-group list-group-flush">
         <li *ngFor="let user of users" class="list-group-item sw-filter">
-            <div *ngIf="!user.admin && user.username !== 'student'">
+            <div *ngIf="!user.admin && user.username !== 'student' && (user.firstName + user.lastName).toUpperCase().includes(this.inputName.toUpperCase())">
                 <div  class="row">
                     <div class="col-3">
                         <img src="{{user.image}}" width="50%">

@@ -4,13 +4,28 @@ var AssignmentModel = mongoose.model('AssignmentModel', AssignmentSchema);
 
 AssignmentModel.findAssignments = findAssignments;
 AssignmentModel.findAssignemntById = findAssignemntById;
+AssignmentModel.createAssignment = createAssignment;
+AssignmentModel.updateAssignment = updateAssignment;
+AssignmentModel.deleteAssignment = deleteAssignment;
 
 function findAssignments() {
-		return AssignmentModel.find();
+	return AssignmentModel.find();
 }
 
 function findAssignemntById(aid) {
 	return AssignmentModel.findById(aid);
+}
+
+function createAssignment(assignment) {
+	return AssignmentModel.create(assignment);
+}
+
+function updateAssignment(aid, assignment) {
+	return AssignmentModel.update({_id: aid}, assignment);
+}
+
+function deleteAssignment(aid) {
+	return AssignmentModel.remove({_id: aid});
 }
 
 module.exports = AssignmentModel;
