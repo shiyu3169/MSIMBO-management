@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service.client';
 import {User} from '../../models/user.model.client';
@@ -11,8 +11,6 @@ import {NgForm} from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-    @ViewChild('f') registerForm: NgForm;
-
     username: string;
     password: string;
     verifyPassword: string;
@@ -23,10 +21,6 @@ export class RegisterComponent implements OnInit {
     constructor(private userService: UserService, private router: Router) { }
 
     register() {
-
-        this.username = this.registerForm.value.username;
-        this.password = this.registerForm.value.password;
-        this.verifyPassword = this.registerForm.value.verifyPassword;
         this.usernameError = false;
         this.passwordError = false;
         if (this.password !== this.verifyPassword) {

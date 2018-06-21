@@ -3,6 +3,7 @@ import { WikiService } from '../../services/wiki.service.client';
 import { Wiki } from '../../models/wiki.model.client';
 import { NgForm } from '@angular/forms';
 import { SharedService } from '../../services/shared.service.client';
+declare var jQuery: any;
 
 @Component({
 	selector: 'app-wiki',
@@ -13,31 +14,56 @@ export class WikiComponent implements OnInit {
 
 	inputName: string;
 	wikis: Wiki[];
+	name: string;
+	src: string;
+    newWiki: Wiki = {
+        name: "",
+        src: ""
+    };
 
 	constructor(private wikiService: WikiService, public sharedService: SharedService) { }
 
 	ngOnInit() {
+        this.inputName = "";
 		this.wikiService.findWikis().subscribe(
-			(assignments: Wiki[]) => {
-				this.wikis = assignments;
-				this.filterWiki();
+			(wikis: Wiki[]) => {
+				this.wikis = wikis;
 			}
 		);
 	}
 
-	filterWiki(){
-        let tr = document.querySelectorAll('tr.sw-wiki');
-        // console.log(tr);
-        for(let i=0;i<tr.length;i++){
-            let a = tr[i].querySelector('a');
-            // console.log(a);
-            let item = <HTMLElement>tr[i];
-            if(a && a.innerHTML.toUpperCase().includes(this.inputName.toUpperCase())){
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
+    update(wiki: Wiki) {
+        this.wikiService.updateWiki(wiki._id, wiki).subscribe(
+            (res: any) => {
+                jQuery('#editModal').modal('hide');
             }
+        );
+    }
+
+    remove(wiki: Wiki) {
+        this.wikiService.deleteWiki(wiki._id).subscribe(
+            (res: any) => {
+                jQuery('#removeModal').modal('hide');
+                this.ngOnInit();
+            }
+        );
+    }
+
+    create() {
+        const wiki2: Wiki = {
+          name: this.name,
+          src: this.src
         }
+        this.wikiService.createWiki(wiki2).subscribe(
+            (res: any) => {
+                jQuery('#newModal').modal('hide');
+                this.ngOnInit();
+            }
+        )
+    }
+
+    init(wiki) {
+        this.newWiki = wiki;
     }
 
 }

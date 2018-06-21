@@ -3,6 +3,7 @@ import { AssignmentService } from '../../services/assignment.service.client';
 import { Assignment } from '../../models/assignment.model.client';
 import { NgForm } from '@angular/forms';
 import { SharedService } from '../../services/shared.service.client';
+declare var jQuery: any;
 
 @Component({
 	selector: 'app-assignment-list',
@@ -12,7 +13,9 @@ import { SharedService } from '../../services/shared.service.client';
 export class AssignmentListComponent implements OnInit {
 
 	assignments: Assignment[];
-
+  name: string;
+  src: string;
+  due: string;
 
   	constructor(private assignmentService: AssignmentService, public sharedService: SharedService) { }
 
@@ -23,5 +26,22 @@ export class AssignmentListComponent implements OnInit {
   			}
   		);
   	}
+
+    update(assignment: Assignment) {
+        jQuery('#editModal').modal('hide');
+    }
+
+    remove(assignment:Assignment) {
+        jQuery('#removeModal').modal('hide');
+    }
+
+    create() {
+        const newAss: Assignment = {
+          name: this.name,
+          src: this.src,
+          due: this.due
+        }
+        jQuery('#newModal').modal('hide');
+    }
 
 }

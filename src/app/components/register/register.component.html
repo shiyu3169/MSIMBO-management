@@ -5,15 +5,15 @@
 	<h1>Register</h1>
 	<form (ngSubmit)="register()" #f="ngForm">
 		<div class="form-group">
-			<input type="text" id="username" name="username" required ngModel #username="ngModel" placeholder="username" class="form-control"/>
+			<input type="text" id="username" name="username" required [(ngModel)]="username" placeholder="username" class="form-control"/>
 		</div>
 		<span class="help-block" *ngIf="!username.valid && username.touched">Please enter username!</span>
 		<div class="form-group">
-			<input type="password" id="password" name="password" required ngModel #password="ngModel" placeholder="password" class="form-control"/>
+			<input type="password" id="password" name="password" required [(ngModel)]="password" placeholder="password" class="form-control"/>
 		</div>
 		<span class="help-block" *ngIf="!password.valid && password.touched">Please enter password!</span>
 		<div class="form-group">
-			<input type="password" id="verifyPassword" name="verifyPassword" required ngModel #verifyPassword="ngModel" placeholder="verify password" class="form-control"/>
+			<input type="password" id="verifyPassword" name="verifyPassword" required [(ngModel)]="verifyPassword" placeholder="verify password" class="form-control"/>
 		</div>
 		<span class="help-block" *ngIf="!verifyPassword.valid && verifyPassword.touched">Please verify username!</span>
 		<button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Register</button>

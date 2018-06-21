@@ -5,24 +5,101 @@
 				<th>Wiki</th>
 				<th *ngIf="sharedService.user && sharedService.user.admin">
 					<div class="float-right">
-					<button class="btn btn-outline-primary"><i class="fas fa-plus fa-lg"></i></button>
+					<button class="btn btn-outline-primary" data-toggle="modal" data-target="#newModal"><i class="fas fa-plus fa-lg"></i></button>
 					</div>
 				</th>
 			</tr>
 			<tr>
-				<th><input class="form-control" type="text" name="inputName" placeholder="Seaching Wiki..." [(ngModel)]="inputName" (input)="filterWiki()"></th>
+				<th>
+					<input class="form-control" type="text" name="inputName" placeholder="Seaching Wiki..." [(ngModel)]="inputName">
+				</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr *ngFor="let wiki of wikis" class="sw-wiki">
-				<td><a routerLink="/wiki/{{wiki._id}}">{{wiki.name}}</a></td>
-				<td *ngIf="sharedService.user && sharedService.user.admin">
+				<td *ngIf="wiki.name.toUpperCase().includes(inputName.toUpperCase())">
+					<a routerLink="/wiki/{{wiki._id}}">{{wiki.name}}</a>
+				</td>
+				<td *ngIf="sharedService.user && sharedService.user.admin && wiki.name.toUpperCase().includes(inputName.toUpperCase())">
 					<div class="float-right">
-						<button class="btn btn-outline-warning sw-margin-left"><i class="fas fa-edit fa-lg"></i></button>
-						<button class="btn btn-outline-danger sw-margin-left"><i class="fas fa-minus fa-lg"></i></button>
+						<button (click)="init(wiki)" class="btn btn-outline-warning sw-margin-left" data-toggle="modal" data-target="#editModal"><i class="fas fa-edit fa-lg"></i></button>
+						<button (click)="init(wiki)" class="btn btn-outline-danger sw-margin-left" data-toggle="modal" data-target="#removeModal"><i class="fas fa-minus fa-lg"></i></button>
 					</div>	
 				</td>
+				<!-- Edit Modals -->
+				<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title">Edit Wiki</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					        <span aria-hidden="true">&times;</span>
+					    </button>
+				      </div>
+				      <div class="modal-body">
+				        <form (ngSubmit)="update(newWiki)">
+				        	<div class="form-group">
+				        		<label for="name">Name</label>
+				          		<input class="form-control" type="text" name="name" [(ngModel)]="newWiki.name">
+				         	</div>
+				         	<div class="form-group">
+				        		<label for="src">Source</label>
+				          		<input class="form-control" type="text" name="src" [(ngModel)]="newWiki.src">
+				         	</div>
+				          <button class="btn btn-success btn-block">Submit</button>
+				        </form>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<!--Remove Modal -->
+				<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  					<div class="modal-dialog modal-dialog-centered" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLongTitle">Remove wiki</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					        Are you sure to delete "{{newWiki.name}}"
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					        <button type="button" (click)="remove(newWiki)" class="btn btn-danger">Delete</button>
+					      </div>
+					    </div>
+					</div>
+				</div>
 			</tr>
 		</tbody>
 	</table>
+</div>
+
+<!-- New Modals -->
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Wiki</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	        <span aria-hidden="true">&times;</span>
+	    </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="create()">
+        	<div class="form-group">
+        		<label for="name">Name</label>
+          		<input class="form-control" type="text" name="name" [(ngModel)]="name">
+         	</div>
+         	<div class="form-group">
+        		<label for="src">Source</label>
+          		<input class="form-control" type="text" name="src" [(ngModel)]="src">
+         	</div>
+          <button class="btn btn-success btn-block">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

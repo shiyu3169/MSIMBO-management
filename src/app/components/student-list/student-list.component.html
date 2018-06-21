@@ -8,7 +8,7 @@
     <!-- Students -->
     <ul class="list-group list-group-flush">
         <li *ngFor="let user of users" class="list-group-item sw-filter">
-            <div *ngIf="!user.admin">
+            <div *ngIf="!user.admin && user.username !== 'student'">
                 <div  class="row">
                     <div class="col-3">
                         <img src="{{user.image}}" width="50%">

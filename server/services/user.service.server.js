@@ -129,7 +129,7 @@ module.exports = function (app) {
 
     function updateuser(req, res) {
         const uid = req.params['uid'];
-        var user = req.body
+        const user = req.body
         userModel.updateUser(uid, user).then(
             (data) => {
                 res.send(data);

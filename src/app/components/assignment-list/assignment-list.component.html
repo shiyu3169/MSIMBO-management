@@ -8,22 +8,104 @@
 				<th>Due Date</th>
 				<th *ngIf="sharedService.user && sharedService.user.admin">
 					<div class="float-right">
-					<button class="btn btn-outline-primary"><i class="fas fa-plus fa-lg"></i></button>
+					<button class="btn btn-outline-primary" data-toggle="modal" data-target="#newModal"><i class="fas fa-plus fa-lg"></i></button>
 					</div>
 				</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr *ngFor="let assignment of assignments">
+				
 				<td><a routerLink="/assignment/{{assignment._id}}">{{assignment.name}}</a></td>
 				<td>{{assignment.due}}</td>
 				<td *ngIf="sharedService.user && sharedService.user.admin">
 					<div class="float-right">
-						<button class="btn btn-outline-warning sw-margin-left"><i class="fas fa-edit fa-lg"></i></button>
-						<button class="btn btn-outline-danger sw-margin-left"><i class="fas fa-minus fa-lg"></i></button>
+						<button class="btn btn-outline-warning sw-margin-left" data-toggle="modal" data-target="#editModal"><i class="fas fa-edit fa-lg"></i></button>
+						<button class="btn btn-outline-danger sw-margin-left" data-toggle="modal" data-target="#removeModal"><i class="fas fa-minus fa-lg"></i></button>
 					</div>	
 				</td>
+				<!-- Edit Modals -->
+				<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title">Edit Assignment</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					        <span aria-hidden="true">&times;</span>
+					    </button>
+				      </div>
+				      <div class="modal-body">
+				        <form (ngSubmit)="update(assignment)">
+				        	<div class="form-group">
+				        		<label for="name">Name</label>
+				          		<input class="form-control" type="text" name="name" [(ngModel)]="assignment.name">
+				         	</div>
+				         	<div class="form-group">
+				        		<label for="src">Source</label>
+				          		<input class="form-control" type="text" name="src" [(ngModel)]="assignment.src">
+				         	</div>
+				         	<div class="form-group">
+				        		<label for="due">Due Date</label>
+				          		<input class="form-control" type="text" name="due" [(ngModel)]="assignment.due">
+				         	</div>
+				          <button class="btn btn-success btn-block">Submit</button>
+				        </form>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<!--Remove Modal -->
+				<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  					<div class="modal-dialog modal-dialog-centered" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLongTitle">Remove Assignment</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					        Are you sure to delete {{assignment.name}}
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					        <button type="button" (click)="remove(assignemnt)" class="btn btn-danger">Delete</button>
+					      </div>
+					    </div>
+					</div>
+				</div>
 			</tr>
 		</tbody>
 	</table>
+</div>
+
+<!-- New Modals -->
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Assignment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	        <span aria-hidden="true">&times;</span>
+	    </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="create()">
+        	<div class="form-group">
+        		<label for="name">Name</label>
+          		<input class="form-control" type="text" name="name" [(ngModel)]="name">
+         	</div>
+         	<div class="form-group">
+        		<label for="src">Source</label>
+          		<input class="form-control" type="text" name="src" [(ngModel)]="src">
+         	</div>
+         	<div class="form-group">
+				<label for="due">Due Date</label>
+				<input class="form-control" type="text" name="due" [(ngModel)]="due">
+			</div>
+          <button class="btn btn-success btn-block">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

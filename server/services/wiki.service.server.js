@@ -4,6 +4,18 @@ module.exports = function (app) {
 
 	app.get("/api/wiki", findWikis);
 	app.get("/api/wiki/:wid", findWikiById);
+	app.put("/api/wiki/:wid", updateWiki);
+	app.delete("/api/wiki/:wid", deleteWiki);
+	app.post("/api/wiki", createWiki);
+
+	function createWiki(req, res) {
+		const wiki = req.body;
+		wikiModel.createWiki(wiki).then(
+			(wiki) => {
+				res.json(wiki);
+			}
+		)
+	}
 
 	function findWikis(req, res) {
 		wikiModel.findWikis().then(
@@ -18,6 +30,25 @@ module.exports = function (app) {
 		wikiModel.findWikiById(wid).then(
 			(wiki) => {
 				res.json(wiki);
+			}
+		)
+	}
+
+	function updateWiki(req, res) {
+		const wid = req.params['wid'];
+		const wiki = req.body;
+		wikiModel.updateWiki(wid, wiki).then(
+			(data) => {
+				res.send(data);
+			}
+		)
+	}
+
+	function deleteWiki(req,res) {
+		const wid = req.params['wid'];
+		wikiModel.deleteWiki(wid).then(
+			(data) => {
+				res.send(data);
 			}
 		)
 	}
