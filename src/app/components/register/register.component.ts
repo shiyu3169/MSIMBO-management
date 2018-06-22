@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
                             lastName: '',
                             email: '',
                             bio: 'MSIMBO Student',
-                            image: './assets/uploads/user.png',
+                            image: './assets/uploads/logo.png',
                             github: '',
                             linkedin: '',
                             project: ''

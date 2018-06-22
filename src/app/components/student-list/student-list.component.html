@@ -2,20 +2,20 @@
 <div class="container">
     <h3 class="sw-red">Our Students</h3>
     <!-- search bar -->
-
     <input class="form-control form-control-lg" type="text" name="inputName" placeholder="Seaching Students..." [(ngModel)]="inputName">
 
     <!-- Students -->
     <ul class="list-group list-group-flush">
-        <li *ngFor="let user of users" class="list-group-item sw-filter">
-            <div *ngIf="!user.admin && user.username !== 'student' && (user.firstName + user.lastName).toUpperCase().includes(this.inputName.toUpperCase())">
+        <div *ngFor="let user of users">
+            <li class="list-group-item" *ngIf="!user.admin && user.username !== 'student' && (user.firstName + user.lastName).toUpperCase().includes(this.inputName.toUpperCase())">
                 <div  class="row">
                     <div class="col-3">
-                        <img src="{{user.image}}" width="50%">
+                        <img class="sw-img-button" routerLink="/visit/{{user._id}}" alt="student image" src="{{user.image}}" width="50%">
                         <h4>{{user.firstName}} {{user.lastName}}</h4>   
                     </div>
                     <div class="col-9">
                         <p>{{user.bio}}</p>
+                        <button (click)="select(user)" data-toggle="modal" data-target="#removeModal" class="btn btn-outline-danger"><i class="far fa-trash-alt fa-lg"></i></button>
                         <ul class="float-right">
                             <li class="list-inline-item"><a [href]="user.project" class="sw-dark" target="_blank"><i class="fas fa-project-diagram"></i></a></li>
                             <li class="list-inline-item"><a [href]="user.linkedin" class="sw-dark" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a></li>
@@ -23,7 +23,27 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </li>
+            </li>
+            <!-- Remove Modal -->
+            <div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Remove Student</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            Are you sure to delete {{selectedUser.firstName}}'s account?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" (click)="remove()" class="btn btn-danger">Delete</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
     </ul>
 </div>

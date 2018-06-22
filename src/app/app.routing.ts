@@ -13,14 +13,19 @@ import { AssignmentDetailComponent } from './components/assignment-detail/assign
 import { WikiComponent } from './components/wiki/wiki.component';
 import { WikiDetailComponent } from './components/wiki-detail/wiki-detail.component';
 import { RegisterComponent } from './components/register/register.component';
+import { VisitComponent } from './components/visit/visit.component';
+
 import { AuthenticationService } from './services/authentication.service.client';
 import { AdminService } from './services/admin.service.client';
+
+
 const APP_ROUTES : Routes = [
   { path : '', component : HomeComponent},
   { path : 'login', component : LoginComponent},
   { path : 'students', component : StudentListComponent},
   { path : 'about', component : AboutComponent},
   { path : 'curriculum', component : CurriculumComponent},
+  { path : 'visit/:uid', component : VisitComponent},
   { path : 'user', component : ProfileComponent, canActivate: [AuthenticationService]},
   { path : 'video', component : VideoComponent, canActivate: [AuthenticationService]},
   { path : 'assignment', component : AssignmentListComponent, canActivate: [AuthenticationService]},

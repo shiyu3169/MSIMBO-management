@@ -35,7 +35,7 @@ export class AssignmentService {
             (res: Response) => {
                 return res.json();
             }
-        )) ;
+        ));
     }
 
     updateAssignment(aid: string, assignment: Assignment) {

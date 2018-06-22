@@ -18,7 +18,8 @@ module.exports = function (app) {
     app.post('/api/login', passport.authenticate('local'), login);
     app.post('/api/logout', logout);
     app.post('/api/loggedIn', loggedIn);
-    app.put('/api/user/:uid', updateuser);
+    app.put('/api/user/:uid', updateUser);
+    app.delete('/api/user/:uid', deleteUser);
 
     passport.use(new LocalStrategy(localStrategy));
 
@@ -127,10 +128,19 @@ module.exports = function (app) {
         );
     }
 
-    function updateuser(req, res) {
+    function updateUser(req, res) {
         const uid = req.params['uid'];
         const user = req.body
         userModel.updateUser(uid, user).then(
+            (data) => {
+                res.send(data);
+            }
+        )
+    }
+
+    function deleteUser(req, res) {
+        const uid = req.params['uid'];
+        userModel.deleteUser(uid).then(
             (data) => {
                 res.send(data);
             }

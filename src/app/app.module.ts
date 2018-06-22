@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http';
 import { Routing } from './app.routing'
+
 // Components
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -19,14 +20,18 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { WikiComponent } from './components/wiki/wiki.component';
 import { WikiDetailComponent } from './components/wiki-detail/wiki-detail.component';
 import { RegisterComponent } from './components/register/register.component';
+import { VisitComponent } from './components/visit/visit.component';
 
 // Services
 import { UserService } from './services/user.service.client';
 import { AssignmentService } from './services/assignment.service.client';
 import { WikiService } from './services/wiki.service.client';
-import { SharedService } from './services/shared.service.client'
+import { GradeService} from './services/grade.service.client';
+import { SharedService } from './services/shared.service.client';
 import { AuthenticationService } from './services/authentication.service.client';
 import { AdminService } from './services/admin.service.client';
+
+
 
 @NgModule({
   declarations: [
@@ -44,7 +49,8 @@ import { AdminService } from './services/admin.service.client';
     NavbarComponent,
     WikiComponent,
     WikiDetailComponent,
-    RegisterComponent
+    RegisterComponent,
+    VisitComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +62,7 @@ import { AdminService } from './services/admin.service.client';
     UserService, 
     AssignmentService, 
     WikiService, 
+    GradeService,
     SharedService, 
     AuthenticationService, 
     AdminService

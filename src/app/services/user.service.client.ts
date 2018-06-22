@@ -124,4 +124,13 @@ export class UserService {
             }
         ));
     }
+
+    deleteUser(uid: string) {
+        const url = this.baseUrl + '/api/user/' + uid;
+        return this.http.delete(url).pipe(map(
+            (res: Response) => {
+                return res.json();
+            }
+        ));
+    }
 }

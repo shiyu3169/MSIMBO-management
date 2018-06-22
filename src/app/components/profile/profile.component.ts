@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service.client';
 import { SharedService } from '../../services/shared.service.client'
 import { User } from '../../models/user.model.client';
 declare var jQuery: any;
 import { environment } from '../../../environments/environment';
-
+import { Grade } from '../../models/grade.model.client';
+import { GradeService } from '../../services/grade.service.client';
 @Component({
 	selector: 'app-profile',
 	templateUrl: './profile.component.html',
@@ -13,17 +14,30 @@ import { environment } from '../../../environments/environment';
 })
 export class ProfileComponent implements OnInit {
 
-	user: User;
-	baseUrl: string;
-	firstName: string;
-	lastName: string;
-	email: string;
-	bio: string;
-	project: string;
-	linkedin: string;
-	github: string;
+	user: User = {
+		username: "",
+		password: "",
+		firstName: "",
+		lastName: "",
+		email: "",
+		bio: "",
+		image: "",
+		github: "",
+		linkedin: "",
+		project: ""
+	};
+	baseUrl: string = "";
+	firstName: string = "";
+	lastName: string = "";
+	email: string = "";
+	bio: string = "";
+	project: string = '';
+	linkedin: string= '';
+	github: string = '';
+	grades: Grade[];
+
 	
-	constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private sharedService: SharedService, private router: Router) { }
+	constructor(private gradeService: GradeService, private userService: UserService, private sharedService: SharedService, private router: Router) { }
 
 	ngOnInit() {
 		this.baseUrl = environment.baseUrl;
@@ -35,6 +49,11 @@ export class ProfileComponent implements OnInit {
 		this.project = this.user.project;
 		this.linkedin = this.user.linkedin;
 		this.github = this.user.github;
+		this.gradeService.findGradeByUser(this.user._id).subscribe(
+			(res: Grade[]) => {
+				this.grades = res;
+			}
+		)
 	}
 
 	logout() {

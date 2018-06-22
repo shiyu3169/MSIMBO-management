@@ -33,6 +33,9 @@ body {
 	margin-right: 20px;
 }
 
+.sw-img-button{
+	cursor: pointer;
+}
 
 .sw-doc {
 	width: 100%;
