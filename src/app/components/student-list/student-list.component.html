@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-9">
                         <p>{{user.bio}}</p>
-                        <button (click)="select(user)" data-toggle="modal" data-target="#removeModal" class="btn btn-outline-danger"><i class="far fa-trash-alt fa-lg"></i></button>
+                        <button *ngIf="sharedService.user && sharedService.user.admin" (click)="select(user)" data-toggle="modal" data-target="#removeModal" class="btn btn-outline-danger"><i class="far fa-trash-alt fa-lg"></i></button>
                         <ul class="float-right">
                             <li class="list-inline-item"><a [href]="user.project" class="sw-dark" target="_blank"><i class="fas fa-project-diagram"></i></a></li>
                             <li class="list-inline-item"><a [href]="user.linkedin" class="sw-dark" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a></li>
