@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../services/user.service.client';
+import {SharedService} from '../../services/shared.service.client';
 import {User} from '../../models/user.model.client';
 import {NgForm} from '@angular/forms';
 declare var jQuery: any;
@@ -27,7 +28,7 @@ export class StudentListComponent implements OnInit {
 
     inputName: string = "";
 
-    constructor(private userService: UserService) { }
+    constructor(private userService: UserService, public sharedService: SharedService) { }
 
     ngOnInit() {
         this.inputName = "";
