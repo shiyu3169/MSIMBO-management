@@ -137,7 +137,7 @@ module.exports = function (app) {
         const uid = req.params['uid'];
         const image = req.file;
 
-        const callbackUrl   = req.headers.referer;
+        const callbackUrl   = req.headers.origin + "/user";
         const picture = {
             name: image.path,
             data: "",
