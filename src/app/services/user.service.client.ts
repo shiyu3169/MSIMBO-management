@@ -133,4 +133,10 @@ export class UserService {
             }
         ));
     }
+
+    findPictureForUser(uid: string) {
+        console.log("findPictureForUser");
+        const url  = this.baseUrl + '/api/user/' + uid + '/picture';
+        return this.http.get(url);
+    }
 }

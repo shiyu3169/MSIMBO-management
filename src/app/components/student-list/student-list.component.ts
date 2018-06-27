@@ -35,6 +35,11 @@ export class StudentListComponent implements OnInit {
         this.userService.findUsers().subscribe(
             (users:User[]) => {
                 this.users = users;
+                for(let user of users) {
+                    if(!user.admin && user.username !== 'student') {
+                        this.userService.findPictureForUser(user._id).subscribe();
+                    }
+                }
             }
         );
     }

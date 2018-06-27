@@ -52,8 +52,9 @@ export class ProfileComponent implements OnInit {
 		this.gradeService.findGradeByUser(this.user._id).subscribe(
 			(res: Grade[]) => {
 				this.grades = res;
+				this.userService.findPictureForUser(this.user._id).subscribe();
 			}
-		)
+		);
 	}
 
 	logout() {

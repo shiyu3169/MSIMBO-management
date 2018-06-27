@@ -1,6 +1,9 @@
 module.exports = function (app) {
 
     const userModel = require('../models/user/user.model.server');
+    const pictureModel = require('../models/picture/picture.model.server');
+
+    var fs = require('fs');
 
     const passport = require('passport');
     let LocalStrategy = require('passport-local').Strategy;
@@ -20,6 +23,7 @@ module.exports = function (app) {
     app.post('/api/loggedIn', loggedIn);
     app.put('/api/user/:uid', updateUser);
     app.delete('/api/user/:uid', deleteUser);
+    app.get('/api/user/:uid/picture', downloadPic)
 
     passport.use(new LocalStrategy(localStrategy));
 
@@ -33,6 +37,24 @@ module.exports = function (app) {
                 }
             }
         )
+   }
+
+   function downloadPic(req, res) {
+        var uid = req.params['uid'];
+        var callbackUrl = req.headers.referer;
+        pictureModel.findPictureForUser(uid).then(
+            picture => {
+                fs.access(picture.name, fs.constants.F_OK, (err) => {
+                    if(err) {
+                        fs.appendFile(picture.name, picture.data, (err) =>{
+                            res.json(null);  
+                        })                        
+                    } else {
+                        res.json(null);
+                    }
+                });
+            }
+        );
    }
 
     function loggedIn(req, res) {
@@ -114,18 +136,34 @@ module.exports = function (app) {
     function uploadImage(req, res) {
         const uid = req.params['uid'];
         const image = req.file;
-        const callbackUrl   = req.headers.origin + "/user";
-        
-        userModel.findUserById(uid).then(
-            (user) => {
-                user.image = '/assets/uploads/' + image.filename;
-                userModel.updateUser(uid, user).then(
-                    (data) => {
-                        res.redirect(callbackUrl);
+
+        const callbackUrl   = req.headers.referer;
+        const picture = {
+            name: image.path,
+            data: "",
+            mimetype: image.mimetype,
+            user: uid
+        }
+
+        fs.readFile(picture.name, (err, data) => {
+            picture.data = data;
+            pictureModel.deletePictureForUser(uid).then(
+                pictureModel.createPicture(picture).then(
+                    (picture) => {
+                        userModel.findUserById(uid).then(
+                            (user) => {
+                                user.image = '/assets/uploads/' + image.filename;
+                                userModel.updateUser(uid, user).then(
+                                    (data) => {
+                                        res.redirect(callbackUrl);
+                                    }
+                                );
+                            }
+                        );     
                     }
-                );
-            }
-        );
+                )
+            )
+        })    
     }
 
     function updateUser(req, res) {
