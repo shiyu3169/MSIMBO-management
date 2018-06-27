@@ -13,7 +13,7 @@ function createWiki(wiki) {
 }
 
 function findWikis() {
-	return WikiModel.find();
+	return WikiModel.find().sort({name: 1});
 }
 
 function findWikiById(wid) {

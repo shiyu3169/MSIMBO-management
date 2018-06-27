@@ -9,7 +9,7 @@ AssignmentModel.updateAssignment = updateAssignment;
 AssignmentModel.deleteAssignment = deleteAssignment;
 
 function findAssignments() {
-	return AssignmentModel.find();
+	return AssignmentModel.find().sort({name: 1});
 }
 
 function findAssignemntById(aid) {

@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
 
 	ngOnInit() {
 		this.errorFlag = false;
+        jQuery("[data-toggle=popover]").popover();
 	}
 
 	login() {

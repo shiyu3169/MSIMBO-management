@@ -15,7 +15,7 @@ function createUser(user) {
 }
 
 function findUsers() {
-	return UserModel.find();
+	return UserModel.find().sort({firstName: 1});
 }
 
 function findUserById(uid) {

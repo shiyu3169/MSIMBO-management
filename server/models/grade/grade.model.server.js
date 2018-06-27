@@ -13,7 +13,7 @@ function createGradeForUser(grade) {
 }
 
 function findGradeForUser(uid) {
-	return GradeModel.find({user: uid});
+	return GradeModel.find({user: uid}).sort({name: 1});
 }
 
 function findAllGrade() {
