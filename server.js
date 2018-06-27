@@ -3,18 +3,20 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const app = express();
-// var enforce = require('express-sslify');
+var enforce = require('express-sslify');
 
 // Use enforce.HTTPS({ trustProtoHeader: true }) in case you are behind
 // a load balancer (e.g. Heroku). See further comments below
-// app.use(enforce.HTTPS());
+
 
 const cookieParser = require('cookie-parser');
 const session = require('cookie-session');
 const passport = require('passport');
 
 app.use(cookieParser());
+
 if(process.env.SESSION_SECRET) {
+  app.use(enforce.HTTPS());
 	app.use(session({ 
 		secret: process.env.SESSION_SECRET,
 		resave: true,
