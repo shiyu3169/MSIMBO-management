@@ -10,7 +10,7 @@ const app = express();
 // app.use(enforce.HTTPS());
 
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
+const session = require('cookie-session');
 const passport = require('passport');
 
 app.use(cookieParser());
