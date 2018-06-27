@@ -44,15 +44,15 @@ module.exports = function (app) {
         var callbackUrl = req.headers.referer;
         pictureModel.findPictureForUser(uid).then(
             picture => {
-                fs.access(picture.name, fs.constants.F_OK, (err) => {
-                    if(err) {
-                        fs.appendFile(picture.name, picture.data, (err) =>{
-                            res.json(null);  
-                        })                        
-                    } else {
-                        res.json(null);
-                    }
-                });
+                if(picture) {
+                    fs.access(picture.name, fs.constants.F_OK, (err) => {
+                        if(err) {
+                            fs.appendFile(picture.name, picture.data, (err) =>{
+                            })                        
+                        }
+                        res.json(null); 
+                    });
+                }
             }
         );
    }

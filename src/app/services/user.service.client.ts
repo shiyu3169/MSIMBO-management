@@ -137,6 +137,10 @@ export class UserService {
     findPictureForUser(uid: string) {
         console.log("findPictureForUser");
         const url  = this.baseUrl + '/api/user/' + uid + '/picture';
-        return this.http.get(url);
+        return this.http.get(url).pipe(map(
+            (res: Response) => {
+                return res.json();
+            }
+        ));
     }
 }
