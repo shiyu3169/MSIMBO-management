@@ -16,7 +16,6 @@ const passport = require('passport');
 app.use(cookieParser());
 
 if(process.env.SESSION_SECRET) {
-  app.use(enforce.HTTPS());
 	app.use(session({ 
 		secret: process.env.SESSION_SECRET,
 		resave: true,
