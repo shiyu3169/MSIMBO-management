@@ -50,9 +50,9 @@ module.exports = function (app) {
                             fs.appendFile(picture.name, picture.data, (err) =>{
                             })                        
                         }
-                        res.json(null); 
                     });
                 }
+                res.json(null); 
             }
         );
    }
