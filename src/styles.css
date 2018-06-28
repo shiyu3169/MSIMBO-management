@@ -70,3 +70,7 @@ a:hover {
 .sw-margin-left{
 	margin-left: 10px;
 }
+
+.sw-profile{
+	word-wrap: break-word;
+}
