@@ -18,12 +18,13 @@
                 <a class="nav-link" routerLink="/curriculum">Curriculum</a>
             </li>
             <li *ngIf="sharedService.user" class="nav-item">
-                <div class="dropdown">
+                <div class="dropdown d-none d-lg-block">
                     <a class="nav-link" routerLink="/assignment">Assignments</a>
                     <div class="dropdown-menu">
                         <a *ngFor="let assignment of assignments" class="dropdown-item" routerLink="/assignment/{{assignment._id}}">{{assignment.name}}</a>
                     </div>
                 </div>
+                <a class="nav-link d-lg-none" routerLink="/assignment">Assignments</a>
             </li>
             <li *ngIf="sharedService.user" class="nav-item">
                 <a class="nav-link" routerLink="/wiki">Wiki</a>

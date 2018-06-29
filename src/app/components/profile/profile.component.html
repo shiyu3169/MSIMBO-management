@@ -1,6 +1,6 @@
 <div class="row container-fluid">
     <!-- Left col -->
-    <div class="col-3 d-none d-lg-block">
+    <div class="col-sm-3">
         <div class="container-fluid">
             <br>
             <div>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <!-- Right col -->
-    <div class="col-9 d-none d-lg-block">
+    <div class="col-sm-9">
         <div class="container-fluid">
             <br>
             <h5>Biography</h5>
@@ -50,61 +50,6 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
-
-    <!-- Mobile View -->
-    <div class="container-fluid d-lg-none">
-        <div>
-            <div class="container-fluid">
-                <br>
-                <div>
-                    <div class="text-center">
-                        <img width="160" height="160" src="{{user.image}}">
-                        <br>
-                        <br>
-                        <button class="btn btn-info" data-toggle="modal" data-target="#imageModal">Update Image</button>
-                    </div>
-                </div>
-                <br>
-                <div class="text-center">
-                    <p><b>Name: </b>{{user.firstName}} {{user.lastName}}</p>
-                    <p class="sw-profile"><b>Email: </b>{{user.email}}</p>
-                </div>
-                <button class="btn btn-info btn-block" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
-                <button type="button" (click)="logout()" class="btn btn-danger btn-block">Logout</button>
-            </div>
-        </div>
-        <div>
-            <div class="container-fluid">
-                <br>
-                <h5>Biography</h5>
-                <p>{{user.bio}}</p>
-                <button class="btn btn-info btn-block" data-toggle="modal" data-target="#bioModal">Edit Biography</button>
-                <br>
-                <br>
-                <p><i class="fas fa-project-diagram"></i><b> Project: </b><a class="sw-profile" href="{{user.project}}" target="_blank">{{user.project}}</a></p>
-                <p><i class="fab fa-linkedin fa-lg"></i><b> LinkedIn: </b><a class="sw-profile" href="{{user.linkedin}}" target="_blank">{{user.linkedin}}</a></p>
-                <p><i class="fab fa-github fa-lg"></i><b> GitHub: </b><a class="sw-profile" href="{{user.github}}" target="_blank">{{user.github}}</a></p>
-                <br>
-                <button class="btn btn-info btn-block" data-toggle="modal" data-target="#linkModal">Edit Links</button>
-            </div>
-            <br>
-            <div class="container-fluid">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th><h4>Grade</h4></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let grade of grades">
-                            <td>{{grade.name}}</td>
-                            <td>{{grade.score}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </div>
     </div>
 </div>

@@ -1,227 +1,114 @@
-<div class="row">
-	<div class="col-3 d-none d-lg-block">
-		<div class="container-fluid">
-			<br>
-			<div class="sw-full-width">
-				<div class="text-center">
-					<img width="40%" src="{{user.image}}">
-					<br>
-					<button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info" data-toggle="modal" data-target="#imageModal">Update Image</button>
-				</div>
-			</div>
-			<br>
-			<div class="sw-padding-left">
-				<p><b>Name: </b>{{user.firstName}} {{user.lastName}}</p>
-				<p class="sw-profile"><b>Email: </b>{{user.email}}</p>
-			</div>
-			<button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info btn-block" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
-		</div>
-	</div>
-	<div class="col-9 d-none d-lg-block">
-		<div class="container-fluid">
-			<br>
-			<br>
-			<br>
-			<br>
-			<h5>Biography</h5>
-			<p>{{user.bio}}</p>
-			<button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info float-right" data-toggle="modal" data-target="#bioModal">Edit Biography</button>
-			<br>
-			<br>
-			<p><i class="fas fa-project-diagram"></i><b> Project: </b><a href="{{user.project}}" target="_blank">{{user.project}}</a></p>
-			<p><i class="fab fa-linkedin fa-lg"></i><b> LinkedIn: </b><a href="{{user.linkedin}}" target="_blank">{{user.linkedin}}</a></p>
-			<p><i class="fab fa-github fa-lg"></i><b> GitHub: </b><a href="{{user.github}}" target="_blank">{{user.github}}</a></p>
-			<br>
-			<button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info" data-toggle="modal" data-target="#linkModal">Edit Links</button>
-		</div>
-		<br>
-		<div class="container-fluid" *ngIf="this.sharedService.user && this.sharedService.user.admin">
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr>
-						<th><h4>Grade</h4></th>
-						<th></th>
-						<th>
-							<div class="float-right">
-								<button (click)="ngOnInit()" class="btn btn-outline-info" data-toggle="modal" data-target="#newModal"><i class="fas fa-plus"></i></button>
-							</div>
-						</th>	
-					</tr>
-				</thead>
-				<tbody>
-					<tr *ngFor="let grade of grades">
-						<td>{{grade.name}}</td>
-						<td>{{grade.score}}</td>
-						<td>
-							<div class="float-right">
-								<button (click)="select(grade)" class="btn btn-outline-warning sw-margin-left" data-toggle="modal" data-target="#editModal"><i class="fas fa-edit"></i></button>
-								<button (click)="select(grade)" class="btn btn-outline-danger sw-margin-left" data-toggle="modal" data-target="#removeModal"><i class="far fa-trash-alt"></i></button>
-							</div>	
-						</td>
-						<!-- Edit Modals -->
-						<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						  <div class="modal-dialog" role="document">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <h5 class="modal-title">Edit Grade</h5>
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							        <span aria-hidden="true">&times;</span>
-							    </button>
-						      </div>
-						      <div class="modal-body">
-						        <form (ngSubmit)="updateGrade()">
-						        	<div class="form-group">
-						        		<label for="name">Name</label>
-						          		<input class="form-control" type="text" name="name" [(ngModel)]="gradeName">
-						         	</div>
-						         	<div class="form-group">
-						        		<label for="src">Score</label>
-						          		<input class="form-control" type="text" name="src" [(ngModel)]="score">
-						         	</div>
-						            <button class="btn btn-success btn-block">Submit</button>
-						        </form>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-						<!--Remove Modal -->
-						<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-		  					<div class="modal-dialog modal-dialog-centered" role="document">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title" id="exampleModalLongTitle">Remove Grade</h5>
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							          <span aria-hidden="true">&times;</span>
-							        </button>
-							      </div>
-							      <div class="modal-body">
-							        Are you sure to delete {{selectedGrade.name}}?
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							        <button type="button" (click)="remove()" class="btn btn-danger">Delete</button>
-							      </div>
-							    </div>
-							</div>
-						</div>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<!-- Mobile View -->
-	<div class="container-fluid d-lg-none">
-		<div>
-			<div class="container-fluid">
-				<br>
-				<div class="sw-full-width">
-					<div class="text-center">
-						<img width="40%" src="{{user.image}}">
-						<br>
-						<button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info" data-toggle="modal" data-target="#imageModal">Update Image</button>
-					</div>
-				</div>
-				<br>
-				<div>
-					<p><b>Name:</b> {{user.firstName}} {{user.lastName}}</p>
-					<p class="sw-profile"><b>Email:</b> {{user.email}}</p>
-				</div>
-				<button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info btn-block" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
-			</div>
-		</div>
-		<div>
-			<div class="container-fluid">
-				<br>
-				<br>
-				<br>
-				<br>
-				<h5>Biography</h5>
-				<p>{{user.bio}}</p>
-				<button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info btn-block" data-toggle="modal" data-target="#bioModal">Edit Biography</button>
-				<br>
-				<br>
-				<p><i class="fas fa-project-diagram"></i> <b>Project: </b><a class="sw-profile" href="{{user.project}}" target="_blank">{{user.project}}</a></p>
-				<p><i class="fab fa-linkedin fa-lg"></i> <b>LinkedIn: </b><a class="sw-profile" href="{{user.linkedin}}" target="_blank">{{user.linkedin}}</a></p>
-				<p><i class="fab fa-github fa-lg"></i> <b>GitHub: </b><a class="sw-profile" href="{{user.github}}" target="_blank">{{user.github}}</a></p>
-				<br>
-				<button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info btn-block" data-toggle="modal" data-target="#linkModal">Edit Links</button>
-			</div>
-			<br>
-			<div class="container-fluid" *ngIf="this.sharedService.user && this.sharedService.user.admin">
-				<table class="table table-striped table-hover">
-					<thead>
-						<tr>
-							<th><h4>Grade</h4></th>
-							<th></th>
-							<th>
-								<div class="float-right">
-									<button (click)="ngOnInit()" class="btn btn-outline-info" data-toggle="modal" data-target="#newModal"><i class="fas fa-plus"></i></button>
-								</div>
-							</th>	
-						</tr>
-					</thead>
-					<tbody>
-						<tr *ngFor="let grade of grades">
-							<td>{{grade.name}}</td>
-							<td>{{grade.score}}</td>
-							<td>
-								<div class="float-right">
-									<button (click)="select(grade)" class="btn btn-outline-warning sw-margin-left" data-toggle="modal" data-target="#editModal"><i class="fas fa-edit"></i></button>
-									<button (click)="select(grade)" class="btn btn-outline-danger sw-margin-left" data-toggle="modal" data-target="#removeModal"><i class="far fa-trash-alt"></i></button>
-								</div>	
-							</td>
-							<!-- Edit Modals -->
-							<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							  <div class="modal-dialog" role="document">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title">Edit Grade</h5>
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								        <span aria-hidden="true">&times;</span>
-								    </button>
-							      </div>
-							      <div class="modal-body">
-							        <form (ngSubmit)="updateGrade()">
-							        	<div class="form-group">
-							        		<label for="name">Name</label>
-							          		<input class="form-control" type="text" name="name" [(ngModel)]="gradeName">
-							         	</div>
-							         	<div class="form-group">
-							        		<label for="src">Score</label>
-							          		<input class="form-control" type="text" name="src" [(ngModel)]="score">
-							         	</div>
-							            <button class="btn btn-success btn-block">Submit</button>
-							        </form>
-							      </div>
-							    </div>
-							  </div>
-							</div>
-							<!--Remove Modal -->
-							<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-			  					<div class="modal-dialog modal-dialog-centered" role="document">
-								    <div class="modal-content">
-								      <div class="modal-header">
-								        <h5 class="modal-title" id="exampleModalLongTitle">Remove Grade</h5>
-								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								          <span aria-hidden="true">&times;</span>
-								        </button>
-								      </div>
-								      <div class="modal-body">
-								        Are you sure to delete {{selectedGrade.name}}?
-								      </div>
-								      <div class="modal-footer">
-								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								        <button type="button" (click)="remove()" class="btn btn-danger">Delete</button>
-								      </div>
-								    </div>
-								</div>
-							</div>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+<div class="row container-fluid">
+    <div class="col-sm-3">
+        <div class="container-fluid">
+            <br>
+            <div class="sw-full-width">
+                <div class="text-center">
+                    <img width="160" height="160" src="{{user.image}}">
+                    <br>
+                    <button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info" data-toggle="modal" data-target="#imageModal">Update Image</button>
+                </div>
+            </div>
+            <br>
+            <div class="text-center">
+                <p><b>Name: </b>{{user.firstName}} {{user.lastName}}</p>
+                <p class="sw-profile"><b>Email: </b>{{user.email}}</p>
+            </div>
+            <button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info btn-block" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div class="container-fluid">
+            <br>
+            <br>
+            <br>
+            <br>
+            <h5>Biography</h5>
+            <p>{{user.bio}}</p>
+            <button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info float-right" data-toggle="modal" data-target="#bioModal">Edit Biography</button>
+            <br>
+            <br>
+            <p><i class="fas fa-project-diagram"></i><b> Project: </b><a href="{{user.project}}" target="_blank">{{user.project}}</a></p>
+            <p><i class="fab fa-linkedin fa-lg"></i><b> LinkedIn: </b><a href="{{user.linkedin}}" target="_blank">{{user.linkedin}}</a></p>
+            <p><i class="fab fa-github fa-lg"></i><b> GitHub: </b><a href="{{user.github}}" target="_blank">{{user.github}}</a></p>
+            <br>
+            <button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info" data-toggle="modal" data-target="#linkModal">Edit Links</button>
+        </div>
+        <br>
+        <div class="container-fluid" *ngIf="this.sharedService.user && this.sharedService.user.admin">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th><h4>Grade</h4></th>
+                        <th></th>
+                        <th>
+                            <div class="float-right">
+                                <button (click)="ngOnInit()" class="btn btn-outline-info" data-toggle="modal" data-target="#newModal"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </th>   
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let grade of grades">
+                        <td>{{grade.name}}</td>
+                        <td>{{grade.score}}</td>
+                        <td>
+                            <div class="float-right">
+                                <button (click)="select(grade)" class="btn btn-outline-warning sw-margin-left" data-toggle="modal" data-target="#editModal"><i class="fas fa-edit"></i></button>
+                                <button (click)="select(grade)" class="btn btn-outline-danger sw-margin-left" data-toggle="modal" data-target="#removeModal"><i class="far fa-trash-alt"></i></button>
+                            </div>  
+                        </td>
+                        <!-- Edit Modals -->
+                        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Edit Grade</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <form (ngSubmit)="updateGrade()">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input class="form-control" type="text" name="name" [(ngModel)]="gradeName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="src">Score</label>
+                                        <input class="form-control" type="text" name="src" [(ngModel)]="score">
+                                    </div>
+                                    <button class="btn btn-success btn-block">Submit</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--Remove Modal -->
+                        <div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Remove Grade</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    Are you sure to delete {{selectedGrade.name}}?
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" (click)="remove()" class="btn btn-danger">Delete</button>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <!-- Image Modals -->
@@ -236,9 +123,9 @@
       </div>
       <div class="modal-body">
         <form ngNoForm action="{{baseUrl}}/api/user/{{user._id}}/upload" method="post" enctype="multipart/form-data">
-        	<div class="form-group">
-          		<input class="form-control" type="file" name="image">
-         	</div>
+            <div class="form-group">
+                <input class="form-control" type="file" name="image">
+            </div>
           <button type="submit" class="btn btn-success btn-block">Upload</button>
         </form>
       </div>
@@ -258,18 +145,18 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="update()">
-        	<div class="form-group">
-        		<label for="firstName">First Name</label>
-          		<input class="form-control" type="text" name="firstName" [(ngModel)]="firstName">
-         	</div>
-         	<div class="form-group">
-        		<label for="lastName">Last Name</label>
-          		<input class="form-control" type="text" name="lastName" [(ngModel)]="lastName">
-         	</div>
-         	<div class="form-group">
-         		<label for="email">Email</label>
-          		<input class="form-control" type="email" name="email" [(ngModel)]="email">
-         	</div>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input class="form-control" type="text" name="firstName" [(ngModel)]="firstName">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input class="form-control" type="text" name="lastName" [(ngModel)]="lastName">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" name="email" [(ngModel)]="email">
+            </div>
           <button class="btn btn-success btn-block">Submit</button>
         </form>
       </div>
@@ -289,12 +176,12 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="update()">
-        	<div class="form-group">
-	        	<textarea class="form-control" type="text" name="bio" [(ngModel)]="bio" rows="5" maxlength="1000">
-	        	</textarea>
-	        	<span class="float-right">{{bio.length}}/1000</span>
-        	</div>
-          	<button class="btn btn-success btn-block">Submit</button>
+            <div class="form-group">
+                <textarea class="form-control" type="text" name="bio" [(ngModel)]="bio" rows="5" maxlength="1000">
+                </textarea>
+                <span class="float-right">{{bio.length}}/1000</span>
+            </div>
+            <button class="btn btn-success btn-block">Submit</button>
         </form>
       </div>
     </div>
@@ -313,18 +200,18 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="update()">
-        	<div class="form-group">
-        		<label for="project">Project</label>
-          		<input class="form-control" type="text" name="project" [(ngModel)]="project">
-         	</div>
-         	<div class="form-group">
-        		<label for="linkedin">LinkedIn</label>
-          		<input class="form-control" type="text" name="linkedin" [(ngModel)]="linkedin">
-         	</div>
-         	<div class="form-group">
-         		<label for="github">GitHub</label>
-          		<input class="form-control" type="text" name="github" [(ngModel)]="github">
-         	</div>
+            <div class="form-group">
+                <label for="project">Project</label>
+                <input class="form-control" type="text" name="project" [(ngModel)]="project">
+            </div>
+            <div class="form-group">
+                <label for="linkedin">LinkedIn</label>
+                <input class="form-control" type="text" name="linkedin" [(ngModel)]="linkedin">
+            </div>
+            <div class="form-group">
+                <label for="github">GitHub</label>
+                <input class="form-control" type="text" name="github" [(ngModel)]="github">
+            </div>
           <button class="btn btn-success btn-block">Submit</button>
         </form>
       </div>
@@ -339,19 +226,19 @@
       <div class="modal-header">
         <h5 class="modal-title">New Grade</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	        <span aria-hidden="true">&times;</span>
-	    </button>
+            <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         <form (ngSubmit)="create()">
-        	<div class="form-group">
-        		<label for="name">Name</label>
-          		<input class="form-control" type="text" name="name" [(ngModel)]="gradeName">
-         	</div>
-         	<div class="form-group">
-        		<label for="src">Score</label>
-          		<input class="form-control" type="text" name="src" [(ngModel)]="score">
-         	</div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" name="name" [(ngModel)]="gradeName">
+            </div>
+            <div class="form-group">
+                <label for="src">Score</label>
+                <input class="form-control" type="text" name="src" [(ngModel)]="score">
+            </div>
           <button class="btn btn-success btn-block">Submit</button>
         </form>
       </div>
