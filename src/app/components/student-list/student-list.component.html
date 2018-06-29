@@ -9,18 +9,34 @@
         <div *ngFor="let user of users">
             <li class="list-group-item" *ngIf="!user.admin && user.username !== 'student' && (user.firstName + user.lastName).toUpperCase().includes(this.inputName.toUpperCase())">
                 <div  class="row">
-                    <div class="col-3">
-                        <img class="sw-img-button" routerLink="/visit/{{user._id}}" alt="student image" src="{{user.image}}" width="50%">
-                        <h4>{{user.firstName}} {{user.lastName}}</h4>   
+                    <div class="col-3 d-none d-lg-block">
+                        <img class="sw-img-button" routerLink="/visit/{{user._id}}" alt="student image" src="{{user.image}}" width="100">
+                        <p class="sw-profile"><b>{{user.firstName}} {{user.lastName}}</b></p>   
                     </div>
-                    <div class="col-9">
+                    <div class="col-9 d-none d-lg-block">
                         <p>{{user.bio}}</p>
                         <button *ngIf="sharedService.user && sharedService.user.admin" (click)="select(user)" data-toggle="modal" data-target="#removeModal" class="btn btn-outline-danger"><i class="far fa-trash-alt fa-lg"></i></button>
                         <ul class="float-right">
-                            <li class="list-inline-item"><a [href]="user.project" class="sw-dark" target="_blank"><i class="fas fa-project-diagram"></i></a></li>
-                            <li class="list-inline-item"><a [href]="user.linkedin" class="sw-dark" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a></li>
-                            <li class="list-inline-item"><a [href]="user.github" class="sw-dark" target="_blank"><i class="fab fa-github fa-lg"></i></a></li>
+                            <li *ngIf="user.project" class="list-inline-item"><a [href]="user.project" class="sw-dark" target="_blank"><i class="fas fa-project-diagram"></i></a></li>
+                            <li *ngIf="user.linkedin" class="list-inline-item"><a [href]="user.linkedin" class="sw-dark" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a></li>
+                            <li *ngIf="user.github" class="list-inline-item"><a [href]="user.github" class="sw-dark" target="_blank"><i class="fab fa-github fa-lg"></i></a></li>
                         </ul>
+                    </div>
+                    <!-- Mobile View -->
+                    <div class="container-fluid d-lg-none">
+                        <div>
+                            <img class="sw-img-button" routerLink="/visit/{{user._id}}" alt="student image" src="{{user.image}}" width="100">
+                            <p class="sw-profile"><b>{{user.firstName}} {{user.lastName}}</b></p>   
+                        </div>
+                        <div>
+                            <p>{{user.bio}}</p>
+                            <button *ngIf="sharedService.user && sharedService.user.admin" (click)="select(user)" data-toggle="modal" data-target="#removeModal" class="btn btn-outline-danger"><i class="far fa-trash-alt fa-lg"></i></button>
+                            <ul class="float-right">
+                                <li *ngIf="user.project" class="list-inline-item"><a [href]="user.project" class="sw-dark" target="_blank"><i class="fas fa-project-diagram"></i></a></li>
+                                <li *ngIf="user.linkedin" class="list-inline-item"><a [href]="user.linkedin" class="sw-dark" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a></li>
+                                <li *ngIf="user.github" class="list-inline-item"><a [href]="user.github" class="sw-dark" target="_blank"><i class="fab fa-github fa-lg"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </li>

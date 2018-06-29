@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row container-fluid">
     <!-- Left col -->
     <div class="col-3 d-none d-lg-block">
         <div class="container-fluid">
@@ -12,9 +12,9 @@
                 </div>
             </div>
             <br>
-            <div class="container-fluid">
-                <h5>Name: {{user.firstName}} {{user.lastName}}</h5>
-                <h5 class="sw-profile">Email: {{user.email}}</h5>
+            <div class="text-center">
+                <p><b>Name: </b>{{user.firstName}} {{user.lastName}}</p>
+                <p class="sw-profile"><b>Email: </b>{{user.email}}</p>
             </div>
             <button class="btn btn-info btn-block" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
             <button type="button" (click)="logout()" class="btn btn-danger btn-block">Logout</button>
@@ -67,9 +67,9 @@
                     </div>
                 </div>
                 <br>
-                <div class="container-fluid">
-                    <h5>Name: {{user.firstName}} {{user.lastName}}</h5>
-                    <h5 class="sw-profile">Email: {{user.email}}</h5>
+                <div class="text-center">
+                    <p><b>Name: </b>{{user.firstName}} {{user.lastName}}</p>
+                    <p class="sw-profile"><b>Email: </b>{{user.email}}</p>
                 </div>
                 <button class="btn btn-info btn-block" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
                 <button type="button" (click)="logout()" class="btn btn-danger btn-block">Logout</button>
@@ -83,9 +83,9 @@
                 <button class="btn btn-info btn-block" data-toggle="modal" data-target="#bioModal">Edit Biography</button>
                 <br>
                 <br>
-                <h6><i class="fas fa-project-diagram"></i> Project: <a class="sw-profile" href="{{user.project}}" target="_blank">{{user.project}}</a></h6>
-                <h6><i class="fab fa-linkedin fa-lg"></i> LinkedIn: <a class="sw-profile" href="{{user.linkedin}}" target="_blank">{{user.linkedin}}</a></h6>
-                <h6><i class="fab fa-github fa-lg"></i> GitHub: <a class="sw-profile" href="{{user.github}}" target="_blank">{{user.github}}</a></h6>
+                <p><i class="fas fa-project-diagram"></i><b> Project: </b><a class="sw-profile" href="{{user.project}}" target="_blank">{{user.project}}</a></p>
+                <p><i class="fab fa-linkedin fa-lg"></i><b> LinkedIn: </b><a class="sw-profile" href="{{user.linkedin}}" target="_blank">{{user.linkedin}}</a></p>
+                <p><i class="fab fa-github fa-lg"></i><b> GitHub: </b><a class="sw-profile" href="{{user.github}}" target="_blank">{{user.github}}</a></p>
                 <br>
                 <button class="btn btn-info btn-block" data-toggle="modal" data-target="#linkModal">Edit Links</button>
             </div>
