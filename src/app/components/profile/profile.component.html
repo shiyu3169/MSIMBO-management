@@ -8,7 +8,7 @@
                     <img width="160" height="160" src="{{user.image}}">
                     <br>
                     <br>
-                    <button class="btn btn-info" data-toggle="modal" data-target="#imageModal">Update Image</button>
+                    <button class="btn btn-outline-info" data-toggle="modal" data-target="#imageModal">Update Image</button>
                 </div>
             </div>
             <br>
@@ -17,8 +17,8 @@
                 <p class="sw-profile"><b>Email: </b>{{user.email}}</p>
                 <p><b>Register Year: </b>{{year}}</p>
             </div>
-            <button class="btn btn-info btn-block" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
-            <button type="button" (click)="logout()" class="btn btn-danger btn-block">Logout</button>
+            <button class="btn btn-outline-info btn-block" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
+            <button type="button" (click)="logout()" class="btn btn-outline-danger btn-block">Logout</button>
         </div>
     </div>
     <!-- Right col -->
@@ -27,14 +27,14 @@
             <br>
             <h5>Biography</h5>
             <p>{{user.bio}}</p>
-            <button class="btn btn-info float-right" data-toggle="modal" data-target="#bioModal">Edit Biography</button>
+            <button class="btn btn-outline-info" data-toggle="modal" data-target="#bioModal">Edit Biography</button>
             <br>
             <br>
             <h6><i class="fas fa-project-diagram"></i> Project: <a class="sw-profile" href="{{user.project}}" target="_blank">{{user.project}}</a></h6>
             <h6><i class="fab fa-linkedin fa-lg"></i> LinkedIn: <a class="sw-profile" href="{{user.linkedin}}" target="_blank">{{user.linkedin}}</a></h6>
             <h6><i class="fab fa-github fa-lg"></i> GitHub: <a class="sw-profile" href="{{user.github}}" target="_blank">{{user.github}}</a></h6>
             <br>
-            <button class="btn btn-info" data-toggle="modal" data-target="#linkModal">Edit Links</button>
+            <button class="btn btn-outline-info" data-toggle="modal" data-target="#linkModal">Edit Links</button>
         </div>
         <br>
         <div class="container-fluid">

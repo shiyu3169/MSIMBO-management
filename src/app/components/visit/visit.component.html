@@ -6,7 +6,8 @@
                 <div class="text-center">
                     <img width="160" height="160" src="{{user.image}}">
                     <br>
-                    <button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info" data-toggle="modal" data-target="#imageModal">Update Image</button>
+                    <br>
+                    <button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-outline-info" data-toggle="modal" data-target="#imageModal">Update Image</button>
                 </div>
             </div>
             <br>
@@ -15,7 +16,7 @@
                 <p class="sw-profile"><b>Email: </b>{{user.email}}</p>
                 <p><b>Register Year: </b>{{year}}</p>
             </div>
-            <button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info btn-block" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
+            <button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-outline-info btn-block" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
         </div>
     </div>
     <div class="col-sm-9">
@@ -26,14 +27,14 @@
             <br>
             <h5>Biography</h5>
             <p>{{user.bio}}</p>
-            <button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info float-right" data-toggle="modal" data-target="#bioModal">Edit Biography</button>
+            <button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-outline-info" data-toggle="modal" data-target="#bioModal">Edit Biography</button>
             <br>
             <br>
             <p><i class="fas fa-project-diagram"></i><b> Project: </b><a href="{{user.project}}" target="_blank">{{user.project}}</a></p>
             <p><i class="fab fa-linkedin fa-lg"></i><b> LinkedIn: </b><a href="{{user.linkedin}}" target="_blank">{{user.linkedin}}</a></p>
             <p><i class="fab fa-github fa-lg"></i><b> GitHub: </b><a href="{{user.github}}" target="_blank">{{user.github}}</a></p>
             <br>
-            <button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info" data-toggle="modal" data-target="#linkModal">Edit Links</button>
+            <button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-outline-info" data-toggle="modal" data-target="#linkModal">Edit Links</button>
         </div>
         <br>
         <div class="container-fluid" *ngIf="this.sharedService.user && this.sharedService.user.admin">
