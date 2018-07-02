@@ -11,4 +11,5 @@ export class User {
 	github: string;
 	linkedin: string;
 	project: string;
+	dateCreated?: Date;
 }

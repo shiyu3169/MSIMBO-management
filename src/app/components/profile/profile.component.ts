@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
 		image: "",
 		github: "",
 		linkedin: "",
-		project: ""
+		project: "",
 	};
 	baseUrl: string = "";
 	firstName: string = "";
@@ -35,6 +35,7 @@ export class ProfileComponent implements OnInit {
 	linkedin: string= '';
 	github: string = '';
 	grades: Grade[];
+	year: number;
 
 	
 	constructor(private gradeService: GradeService, private userService: UserService, private sharedService: SharedService, private router: Router) { }
@@ -49,6 +50,7 @@ export class ProfileComponent implements OnInit {
 		this.project = this.user.project;
 		this.linkedin = this.user.linkedin;
 		this.github = this.user.github;
+		this.year = new Date(this.user.dateCreated).getFullYear();
 		this.gradeService.findGradeByUser(this.user._id).subscribe(
 			(res: Grade[]) => {
 				this.grades = res;

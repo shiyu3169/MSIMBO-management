@@ -56,4 +56,8 @@ export class StudentListComponent implements OnInit {
             }
         )
     }
+
+    getYear(date: Date){
+        return new Date(date).getFullYear();
+    }
 }

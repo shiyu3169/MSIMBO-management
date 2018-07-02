@@ -13,6 +13,7 @@
             <div class="text-center">
                 <p><b>Name: </b>{{user.firstName}} {{user.lastName}}</p>
                 <p class="sw-profile"><b>Email: </b>{{user.email}}</p>
+                <p><b>Register Year: </b>{{year}}</p>
             </div>
             <button *ngIf="this.sharedService.user && this.sharedService.user.admin" class="btn btn-info btn-block" data-toggle="modal" data-target="#profileModal">Edit Profile</button>
         </div>

@@ -2,16 +2,17 @@
 <div class="container">
     <h3 class="sw-red">Our Students</h3>
     <!-- search bar -->
-    <input class="form-control form-control-lg" type="text" name="inputName" placeholder="Seaching Students..." [(ngModel)]="inputName">
+    <input class="form-control form-control-lg" type="text" name="inputName" placeholder="Seaching Name or Year..." [(ngModel)]="inputName">
 
     <!-- Students -->
     <ul class="list-group list-group-flush">
         <div *ngFor="let user of users">
-            <li class="list-group-item" *ngIf="!user.admin && user.username !== 'student' && (user.firstName + user.lastName).toUpperCase().includes(this.inputName.toUpperCase())">
+            <li class="list-group-item" *ngIf="!user.admin && user.username !== 'student' && (user.firstName + user.lastName + user.dateCreated).toUpperCase().includes(this.inputName.toUpperCase())">
                 <div class="row">
                     <div class="col-sm-3 text-center">
                         <img class="sw-img-button" routerLink="/visit/{{user._id}}" alt="student image" src="{{user.image}}" width="100">
-                        <p class="sw-profile"><b>{{user.firstName}} {{user.lastName}}</b></p>   
+                        <p class="sw-profile"><b>{{user.firstName}} {{user.lastName}}</b></p> 
+                        <p>{{getYear(user.dateCreated)}}</p>  
                     </div>
                     <div class="col-sm-9">
                         <p>{{user.bio}}</p>
