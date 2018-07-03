@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <img class="sw-btn" routerLink="/" src="../../../assets/uploads/logo.png" height="40">
     <a class="navbar-brand" routerLink="/">MSIMBO</a>
     <button  *ngIf="sharedService.user" routerLink="/user" class="d-lg-none btn sw-bg-transparent sw-white" type="button"><i class="fas fa-user"></i></button>
@@ -39,7 +39,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="https://msimbo.slack.com" target="_blank">Slack</a>
             </li>
-            
         </ul>
         <button *ngIf="!sharedService.user" routerLink="/login" class="d-none d-lg-block btn btn-outline-info" type="button">Student Login</button>
         <button *ngIf="!sharedService.user" routerLink="/login" class="d-lg-none btn btn-block btn-outline-info" type="button">Student Login</button>

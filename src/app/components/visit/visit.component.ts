@@ -7,7 +7,7 @@ import { User } from '../../models/user.model.client';
 import { Grade } from '../../models/grade.model.client';
 declare var $: any;
 import { environment } from '../../../environments/environment';
-import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-visit',
@@ -49,7 +49,7 @@ export class VisitComponent implements OnInit {
 		score: ""
 	}
 
-    constructor(private sanitizer: DomSanitizer, private gradeService: GradeService, private userService: UserService, private activatedRoute: ActivatedRoute, public sharedService: SharedService, private router: Router) { }
+    constructor(private gradeService: GradeService, private userService: UserService, private activatedRoute: ActivatedRoute, public sharedService: SharedService, private router: Router) { }
 
 
     ngOnInit() {
@@ -127,10 +127,6 @@ export class VisitComponent implements OnInit {
 			}
 		)
 	}
-
-	getEmbedUrl(link: string) {
-	    return this.sanitizer.bypassSecurityTrustResourceUrl(link);
-  	}
 
 	remove() {
 		this.gradeService.deleteGrade(this.selectedGrade._id).subscribe(
