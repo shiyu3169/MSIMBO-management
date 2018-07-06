@@ -40,13 +40,15 @@ export class VisitComponent implements OnInit {
 	grades: Grade[];
 	gradeName: string = '';
 	score: string = '';
+	comment: string = "";
 	year: number;
 
 
 	selectedGrade: Grade = {
 		name: "",
 		user: "",
-		score: ""
+		score: "",
+		comment: ""
 	}
 
     constructor(private gradeService: GradeService, private userService: UserService, private activatedRoute: ActivatedRoute, public sharedService: SharedService, private router: Router) { }
@@ -56,6 +58,7 @@ export class VisitComponent implements OnInit {
 	  	this.baseUrl = environment.baseUrl;
 	  	this.gradeName = '';
 		this.score = '';
+		this.comment = '';
 	  	this.activatedRoute.params.subscribe(
 	  		params => {
 	  			this.uid = params['uid'];
@@ -100,7 +103,8 @@ export class VisitComponent implements OnInit {
 		const newGrade: Grade ={
 			name: this.gradeName,
 			score: this.score,
-			user: this.uid
+			user: this.uid,
+			comment: this.comment
 		}
 		this.gradeService.createGrade(newGrade).subscribe(
 			res => {
@@ -115,11 +119,13 @@ export class VisitComponent implements OnInit {
 		this.selectedGrade = grade;
 		this.gradeName = this.selectedGrade.name;
 		this.score = this.selectedGrade.score;
+		this.comment = this.selectedGrade.comment;
 	}
 
 	updateGrade() {
 		this.selectedGrade.name = this.gradeName;
 		this.selectedGrade.score = this.score;
+		this.selectedGrade.comment = this.comment;
 		this.gradeService.updateGrade(this.selectedGrade._id, this.selectedGrade).subscribe(
 			res => {
 				$('#editModal').modal('hide');

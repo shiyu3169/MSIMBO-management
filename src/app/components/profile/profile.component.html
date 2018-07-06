@@ -48,6 +48,23 @@
                     <tr *ngFor="let grade of grades">
                         <td>{{grade.name}}</td>
                         <td>{{grade.score}}</td>
+                        <td><button (click)="select(grade)" class="btn btn-outline-info" data-toggle="modal" data-target="#commentModal">Show Comment</button></td>
+                        <!-- Comment Modal -->
+                        <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Comment for {{selectedGrade.name}}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <pre>{{selectedGrade.comment}}</pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </tr>
                 </tbody>
             </table>
@@ -55,7 +72,7 @@
     </div>
 </div>
 
-<!-- Image Modals -->
+<!-- Image Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -79,30 +96,30 @@
 
 <!-- Profile Modals -->
 <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Edit Profile</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </button>
-  </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
   <div class="modal-body">
     <form (ngSubmit)="update()">
-       <div class="form-group">
-          <label for="firstName">First Name</label>
-          <input class="form-control" type="text" name="firstName" [(ngModel)]="firstName">
-      </div>
-      <div class="form-group">
-          <label for="lastName">Last Name</label>
-          <input class="form-control" type="text" name="lastName" [(ngModel)]="lastName">
-      </div>
-      <div class="form-group">
-         <label for="email">Email</label>
-         <input class="form-control" type="email" name="email" [(ngModel)]="email">
-     </div>
-     <button class="btn btn-success btn-block">Submit</button>
- </form>
+     <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input class="form-control" type="text" name="firstName" [(ngModel)]="firstName">
+  </div>
+  <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input class="form-control" type="text" name="lastName" [(ngModel)]="lastName">
+  </div>
+  <div class="form-group">
+   <label for="email">Email</label>
+   <input class="form-control" type="email" name="email" [(ngModel)]="email">
+</div>
+<button class="btn btn-success btn-block">Submit</button>
+</form>
 </div>
 </div>
 </div>
@@ -120,13 +137,13 @@
   </div>
   <div class="modal-body">
     <form (ngSubmit)="update()">
-       <div class="form-group">
-          <textarea class="form-control" type="text" name="bio" [(ngModel)]="bio" rows="5" maxlength="1000">
-          </textarea>
-          <span class="float-right">{{bio.length}}/1000</span>
-      </div>
-      <button class="btn btn-success btn-block">Submit</button>
-  </form>
+     <div class="form-group">
+      <textarea class="form-control" type="text" name="bio" [(ngModel)]="bio" rows="5" maxlength="1000">
+      </textarea>
+      <span class="float-right">{{bio.length}}/1000</span>
+  </div>
+  <button class="btn btn-success btn-block">Submit</button>
+</form>
 </div>
 </div>
 </div>
@@ -144,20 +161,20 @@
   </div>
   <div class="modal-body">
     <form (ngSubmit)="update()">
-       <div class="form-group">
-          <label for="project">Project</label>
-          <input class="form-control" type="text" name="project" [(ngModel)]="project">
-      </div>
-      <div class="form-group">
-          <label for="linkedin">LinkedIn</label>
-          <input class="form-control" type="text" name="linkedin" [(ngModel)]="linkedin">
-      </div>
-      <div class="form-group">
-         <label for="github">GitHub</label>
-         <input class="form-control" type="text" name="github" [(ngModel)]="github">
-     </div>
-     <button class="btn btn-success btn-block">Submit</button>
- </form>
+     <div class="form-group">
+      <label for="project">Project</label>
+      <input class="form-control" type="text" name="project" [(ngModel)]="project">
+  </div>
+  <div class="form-group">
+      <label for="linkedin">LinkedIn</label>
+      <input class="form-control" type="text" name="linkedin" [(ngModel)]="linkedin">
+  </div>
+  <div class="form-group">
+   <label for="github">GitHub</label>
+   <input class="form-control" type="text" name="github" [(ngModel)]="github">
+</div>
+<button class="btn btn-success btn-block">Submit</button>
+</form>
 </div>
 </div>
 </div>

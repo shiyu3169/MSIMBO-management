@@ -43,6 +43,7 @@
                     <tr>
                         <th><h4>Grade</h4></th>
                         <th></th>
+                        <th></th>
                         <th>
                             <div class="float-right">
                                 <button (click)="ngOnInit()" class="btn btn-outline-info" data-toggle="modal" data-target="#newModal"><i class="fas fa-plus"></i></button>
@@ -54,6 +55,7 @@
                     <tr *ngFor="let grade of grades">
                         <td>{{grade.name}}</td>
                         <td>{{grade.score}}</td>
+                        <td><button (click)="select(grade)" class="btn btn-outline-info" data-toggle="modal" data-target="#commentModal">Show Comment</button></td>
                         <td>
                             <div class="float-right">
                                 <button (click)="select(grade)" class="btn btn-outline-warning sw-margin-left" data-toggle="modal" data-target="#editModal"><i class="fas fa-edit"></i></button>
@@ -80,11 +82,31 @@
                                         <label for="src">Score</label>
                                         <input class="form-control" type="text" name="src" [(ngModel)]="score">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="src">Comment</label>
+                                        <textarea class="form-control" rows="5" type="text" name="comment" [(ngModel)]="comment"></textarea>
+                                    </div>
                                     <button class="btn btn-success btn-block">Submit</button>
                                 </form>
                               </div>
                             </div>
                           </div>
+                        </div>
+                        <!-- Comment Modal -->
+                        <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Comment for {{selectedGrade.name}}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <pre>{{selectedGrade.comment}}</pre>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!--Remove Modal -->
                         <div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -240,6 +262,10 @@
             <div class="form-group">
                 <label for="src">Score</label>
                 <input class="form-control" type="text" name="src" [(ngModel)]="score">
+            </div>
+            <div class="form-group">
+                <label for="src">Comment</label>
+                <textarea class="form-control" rows="5" type="text" name="comment" [(ngModel)]="comment"></textarea>
             </div>
           <button class="btn btn-success btn-block">Submit</button>
         </form>

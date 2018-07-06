@@ -36,7 +36,12 @@ export class ProfileComponent implements OnInit {
 	github: string = '';
 	grades: Grade[];
 	year: number;
-
+	selectedGrade: Grade = {
+		name: "",
+		user: "",
+		score: "",
+		comment: ""
+	}
 	
 	constructor(private gradeService: GradeService, private userService: UserService, private sharedService: SharedService, private router: Router) { }
 
@@ -65,6 +70,10 @@ export class ProfileComponent implements OnInit {
 				this.router.navigate(['/']);
 			}
 		);
+	}
+
+	select(grade: Grade){
+		this.selectedGrade = grade;
 	}
 
 	update() {

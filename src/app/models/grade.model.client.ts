@@ -3,4 +3,5 @@ export class Grade {
 	name: string;
 	user: string;
 	score: string;
+	comment?: string; //some grades were created before this feature
 }
