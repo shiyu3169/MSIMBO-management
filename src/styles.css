@@ -85,7 +85,7 @@ a:hover {
     /* The image used */
     background-image: url("assets/uploads/bg1.jpg");
     /* Set a specific height */
-    min-height: 700px;
+    min-height: 650px;
     width: 100%; 
 
     /* Create the parallax scrolling effect */
@@ -110,3 +110,7 @@ a:hover {
 	from{bottom:-300px;opacity:0} 
 	to{bottom:0;opacity:1}
 }
+
+.holds-the-iframe {
+  background:url(assets/uploads/loading-gif-1.gif) center center no-repeat;
+ }
