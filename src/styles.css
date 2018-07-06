@@ -86,7 +86,7 @@ a:hover {
     background-image: url("assets/uploads/bg1.jpg");
 
     /* Set a specific height */
-    min-height: 800px;
+    min-height: 700px;
     width: 100%; 
 
     /* Create the parallax scrolling effect */
