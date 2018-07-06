@@ -36,6 +36,11 @@ body {
 
 .sw-img-button{
 	cursor: pointer;
+	opacity: 0.9;
+}
+
+.sw-img-button:hover{
+	opacity: 1;
 }
 
 .sw-doc {
@@ -74,4 +79,25 @@ a:hover {
 
 .sw-profile{
 	word-wrap: break-word;
+}
+
+.sw-parallax {
+    /* The image used */
+    background-image: url("assets/uploads/bg1.jpg");
+
+    /* Set a specific height */
+    min-height: 800px;
+    width: 100%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+
+
+.sw-bg-white{
+	background-color: white;
 }
