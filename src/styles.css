@@ -103,7 +103,7 @@ a:hover {
 
 .animate-bottom {
 	position:relative;
-	animation:animatebottom 0.7s
+	animation:animatebottom 0.5s
 }
 
 @keyframes animatebottom {
