@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 declare var jQuery: any;
+import {User} from '../../models/user.model.client';
+import {UserService} from '../../services/user.service.client';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,17 +9,21 @@ declare var jQuery: any;
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private sanitizer: DomSanitizer) { }
+    users: User[];
 
-  ngOnInit() {
-  	jQuery('.carousel').carousel({
-  		interval: 3000
-	})
-  }
+    constructor(private userService: UserService) { }
 
-  // getUrl(link) {
-  // 	return this.sanitizer.bypassSecurityTrustUrl(link);
-  // }
-
-
+    ngOnInit() {
+  	    jQuery('.carousel').carousel({
+  		    interval: 3000
+	    });
+        this.userService.findUsers().subscribe(
+            (users:User[]) => {
+                this.users = users;
+                for(let user of users) {
+                    this.userService.findPictureForUser(user._id).subscribe();
+                }
+            }
+        );
+    }
 }

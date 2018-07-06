@@ -41,18 +41,17 @@ module.exports = function (app) {
 
    function downloadPic(req, res) {
         var uid = req.params['uid'];
-        var callbackUrl = req.headers.referer;
         pictureModel.findPictureForUser(uid).then(
             picture => {
                 if(picture) {
                     fs.access(picture.name, fs.constants.F_OK, (err) => {
                         if(err) {
                             fs.appendFile(picture.name, picture.data, (err) =>{
-                            })                        
+                            })
                         }
                     });
                 }
-                res.json(null); 
+                res.json(null);
             }
         );
    }
