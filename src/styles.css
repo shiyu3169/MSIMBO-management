@@ -84,7 +84,6 @@ a:hover {
 .sw-parallax {
     /* The image used */
     background-image: url("assets/uploads/bg1.jpg");
-
     /* Set a specific height */
     min-height: 700px;
     width: 100%; 
@@ -100,4 +99,14 @@ a:hover {
 
 .sw-bg-white{
 	background-color: white;
+}
+
+.animate-bottom {
+	position:relative;
+	animation:animatebottom 0.7s
+}
+
+@keyframes animatebottom {
+	from{bottom:-300px;opacity:0} 
+	to{bottom:0;opacity:1}
 }
