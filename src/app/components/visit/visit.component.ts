@@ -42,7 +42,7 @@ export class VisitComponent implements OnInit {
 	score: string = '';
 	comment: string = "";
 	year: number;
-
+	month: number;
 
 	selectedGrade: Grade = {
 		name: "",
@@ -73,6 +73,7 @@ export class VisitComponent implements OnInit {
 						this.linkedin = this.user.linkedin;
 						this.github = this.user.github;
 						this.year = new Date(this.user.dateCreated).getFullYear();
+						this.month = new Date(this.user.dateCreated).getMonth();
 	  				}
 	  			);
 	  			this.gradeService.findGradeByUser(this.uid).subscribe(

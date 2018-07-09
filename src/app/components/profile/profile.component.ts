@@ -36,6 +36,7 @@ export class ProfileComponent implements OnInit {
 	github: string = '';
 	grades: Grade[];
 	year: number;
+	month: number;
 	selectedGrade: Grade = {
 		name: "",
 		user: "",
@@ -56,6 +57,7 @@ export class ProfileComponent implements OnInit {
 		this.linkedin = this.user.linkedin;
 		this.github = this.user.github;
 		this.year = new Date(this.user.dateCreated).getFullYear();
+		this.month = new Date(this.user.dateCreated).getMonth();
 		this.gradeService.findGradeByUser(this.user._id).subscribe(
 			(res: Grade[]) => {
 				this.grades = res;
