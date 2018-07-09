@@ -87,12 +87,12 @@ a:hover {
     /* Set a specific height */
     min-height: 650px;
     width: 100%; 
-
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; 
+    opacity: 0.5;
 }
 
 
@@ -108,7 +108,7 @@ a:hover {
 
 @keyframes animatebottom {
 	from{bottom:-300px;opacity:0} 
-	to{bottom:0;opacity:1}
+	to{bottom:0;opacity:0.5}
 }
 
 .holds-the-iframe {

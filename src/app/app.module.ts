@@ -21,6 +21,7 @@ import { WikiComponent } from './components/wiki/wiki.component';
 import { WikiDetailComponent } from './components/wiki-detail/wiki-detail.component';
 import { RegisterComponent } from './components/register/register.component';
 import { VisitComponent } from './components/visit/visit.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
 
 // Services
 import { UserService } from './services/user.service.client';
@@ -30,8 +31,6 @@ import { GradeService} from './services/grade.service.client';
 import { SharedService } from './services/shared.service.client';
 import { AuthenticationService } from './services/authentication.service.client';
 import { AdminService } from './services/admin.service.client';
-
-
 
 @NgModule({
   declarations: [
@@ -50,7 +49,8 @@ import { AdminService } from './services/admin.service.client';
     WikiComponent,
     WikiDetailComponent,
     RegisterComponent,
-    VisitComponent
+    VisitComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
