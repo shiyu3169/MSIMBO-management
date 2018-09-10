@@ -1,8 +1,10 @@
 <!-- Navbar -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <img class="sw-btn" routerLink="/" src="../../../assets/uploads/logo.png" height="40">
-    <button  *ngIf="sharedService.user" routerLink="/user" class="d-lg-none btn sw-bg-transparent sw-white" type="button"><i class="fas fa-user"></i></button>
-    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <button *ngIf="sharedService.user" routerLink="/user" class="d-lg-none btn sw-bg-transparent sw-white" type="button"><i
+            class="fas fa-user"></i></button>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+        aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -36,16 +38,21 @@
                 <a class="nav-link" routerLink="/wiki">Wiki</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/video">Videos</a>
+                <a class="nav-link" routerLink="https://www.youtube.com/channel/UC9NVYFh1gs3AShriwWX7NNQ">Videos</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="https://msimbo.slack.com" target="_blank">Slack</a>
             </li>
         </ul>
-        <button *ngIf="!sharedService.user" routerLink="/login" class="d-none d-lg-block btn btn-outline-info" type="button">Student Login</button>
-        <button *ngIf="!sharedService.user" routerLink="/login" class="d-lg-none btn btn-block btn-outline-info" type="button">Student Login</button>
-        <button *ngIf="sharedService.user && sharedService.user.admin" routerLink="/register" class="d-none d-lg-block btn btn-outline-warning" type="button">Student Register</button>
-        <button *ngIf="sharedService.user && sharedService.user.admin" routerLink="/register" class="d-lg-none btn btn-block btn-outline-warning" type="button">Student Register</button>
-        <button  *ngIf="sharedService.user" routerLink="/user" class="d-none d-lg-block btn sw-bg-transparent sw-white" type="button"><i class="fas fa-user"></i></button>
+        <button *ngIf="!sharedService.user" routerLink="/login" class="d-none d-lg-block btn btn-outline-info" type="button">Student
+            Login</button>
+        <button *ngIf="!sharedService.user" routerLink="/login" class="d-lg-none btn btn-block btn-outline-info" type="button">Student
+            Login</button>
+        <button *ngIf="sharedService.user && sharedService.user.admin" routerLink="/register" class="d-none d-lg-block btn btn-outline-warning"
+            type="button">Student Register</button>
+        <button *ngIf="sharedService.user && sharedService.user.admin" routerLink="/register" class="d-lg-none btn btn-block btn-outline-warning"
+            type="button">Student Register</button>
+        <button *ngIf="sharedService.user" routerLink="/user" class="d-none d-lg-block btn sw-bg-transparent sw-white"
+            type="button"><i class="fas fa-user"></i></button>
     </div>
 </nav>
