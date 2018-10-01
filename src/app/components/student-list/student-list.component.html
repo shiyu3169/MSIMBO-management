@@ -11,9 +11,9 @@
             <li class="list-group-item" *ngIf="!user.admin && user.username !== 'student' && (user.firstName + user.lastName + getMonth(user.dateCreated) + '/' + getYear(user.dateCreated)).toUpperCase().includes(this.inputName.toUpperCase())">
                 <div class="row">
                     <div class="col-sm-3 text-center">
-                        <img class="sw-img-button" routerLink="/visit/{{user._id}}" alt="student image" src="{{user.image}}"
-                            width="100">
-                        <p class="sw-profile sw-button" routerLink="/visit/{{user._id}}"><b>{{user.firstName}}
+                        <a routerLink="/visit/{{user._id}}"><img class="sw-img-button" alt="student image" src="{{user.image}}"
+                                width="100"></a>
+                        <p class="sw-profile"><b>{{user.firstName}}
                                 {{user.lastName}}</b></p>
                         <p>{{getMonth(user.dateCreated)}}/{{getYear(user.dateCreated)}}</p>
                     </div>
