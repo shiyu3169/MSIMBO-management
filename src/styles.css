@@ -1,56 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-	padding-top: 56px;
+  padding-top: 56px;
 }
 
-.sw-full-width{
-	width: 100%;
+.sw-full-width {
+  width: 100%;
 }
 
-.sw-text-center{
-	text-align: center;
-	padding: 0;
-	margin: 0;
+.sw-text-center {
+  text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
-.sw-red{
-	color: #ce0404;
+.sw-red {
+  color: #ce0404;
 }
 
-.sw-white{
-	color: white;
+.sw-white {
+  color: white;
 }
 
-.sw-bg-transparent{
-	background: transparent;
+.sw-bg-transparent {
+  background: transparent;
 }
 
-.sw-dark{
-	color: #3f3f3f;
+.sw-dark {
+  color: #3f3f3f;
 }
 
-.sw-btn{
-	cursor: pointer;
-	margin-right: 20px;
+.sw-btn {
+  cursor: pointer;
+  margin-right: 20px;
 }
 
-.sw-img-button{
-	cursor: pointer;
-	opacity: 0.9;
+.sw-img-button {
+  cursor: pointer;
+  opacity: 0.9;
 }
 
-.sw-img-button:hover{
-	opacity: 1;
+.sw-button {
+  cursor: pointer;
+}
+
+.sw-img-button:hover {
+  opacity: 1;
 }
 
 .sw-doc {
-	width: 100%;
-	height: 85vh;
+  width: 100%;
+  height: 85vh;
 }
 
 .sw-sheet {
-	width: 100%;
-	height: 93vh;
+  width: 100%;
+  height: 93vh;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -58,59 +62,63 @@ body {
 }
 
 .dropdown-item:hover {
-	background-color: #878787;
+  background-color: #878787;
 }
 
-.dropdown-menu{
-	margin-top: 0;
+.dropdown-menu {
+  margin-top: 0;
 }
 
-.sw-padding-left{
-	padding-left: 80px;
+.sw-padding-left {
+  padding-left: 80px;
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-.sw-margin-left{
-	margin-left: 10px;
+.sw-margin-left {
+  margin-left: 10px;
 }
 
-.sw-profile{
-	word-wrap: break-word;
+.sw-profile {
+  word-wrap: break-word;
 }
 
 .sw-parallax {
-    /* The image used */
-    background-image: url("assets/uploads/bg1.jpg");
-    /* Set a specific height */
-    min-height: 650px;
-    width: 100%; 
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; 
-    opacity: 0.5;
+  /* The image used */
+  background-image: url("assets/uploads/bg1.jpg");
+  /* Set a specific height */
+  min-height: 650px;
+  width: 100%;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
 }
 
-
-
-.sw-bg-white{
-	background-color: white;
+.sw-bg-white {
+  background-color: white;
 }
 
 .animate-bottom {
-	position:relative;
-	animation:animatebottom 0.5s
+  position: relative;
+  animation: animatebottom 0.5s;
 }
 
 @keyframes animatebottom {
-	from{bottom:-300px;opacity:0} 
-	to{bottom:0;opacity:0.5}
+  from {
+    bottom: -300px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 0.5;
+  }
 }
 
 .holds-the-iframe {
-  background:url(assets/uploads/loading-gif-1.gif) center center no-repeat;
- }
+  background: url(assets/uploads/loading-gif-1.gif) center center no-repeat;
+}

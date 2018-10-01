@@ -2,7 +2,8 @@
 <div class="container animate-bottom">
     <h3 class="sw-red">Our Students</h3>
     <!-- search bar -->
-    <input class="form-control form-control-lg" type="text" name="inputName" placeholder="Seaching Name or Registered Time..." [(ngModel)]="inputName">
+    <input class="form-control form-control-lg" type="text" name="inputName" placeholder="Seaching Name or Registered Time..."
+        [(ngModel)]="inputName">
 
     <!-- Students -->
     <ul class="list-group list-group-flush">
@@ -10,41 +11,48 @@
             <li class="list-group-item" *ngIf="!user.admin && user.username !== 'student' && (user.firstName + user.lastName + getMonth(user.dateCreated) + '/' + getYear(user.dateCreated)).toUpperCase().includes(this.inputName.toUpperCase())">
                 <div class="row">
                     <div class="col-sm-3 text-center">
-                        <img class="sw-img-button" routerLink="/visit/{{user._id}}" alt="student image" src="{{user.image}}" width="100">
-                        <p class="sw-profile"><b>{{user.firstName}} {{user.lastName}}</b></p> 
-                        <p>{{getMonth(user.dateCreated)}}/{{getYear(user.dateCreated)}}</p>  
+                        <img class="sw-img-button" routerLink="/visit/{{user._id}}" alt="student image" src="{{user.image}}"
+                            width="100">
+                        <p class="sw-profile sw-button" routerLink="/visit/{{user._id}}"><b>{{user.firstName}}
+                                {{user.lastName}}</b></p>
+                        <p>{{getMonth(user.dateCreated)}}/{{getYear(user.dateCreated)}}</p>
                     </div>
                     <div class="col-sm-9">
                         <p>{{user.bio}}</p>
-                        <button *ngIf="sharedService.user && sharedService.user.admin" (click)="select(user)" data-toggle="modal" data-target="#removeModal" class="btn btn-outline-danger"><i class="far fa-trash-alt fa-lg"></i></button>
+                        <button *ngIf="sharedService.user && sharedService.user.admin" (click)="select(user)"
+                            data-toggle="modal" data-target="#removeModal" class="btn btn-outline-danger"><i class="far fa-trash-alt fa-lg"></i></button>
                         <ul class="float-right">
-                            <li *ngIf="user.project" class="list-inline-item"><a [href]="user.project" class="sw-dark" target="_blank"><i class="fas fa-project-diagram"></i></a></li>
-                            <li *ngIf="user.linkedin" class="list-inline-item"><a [href]="user.linkedin" class="sw-dark" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a></li>
-                            <li *ngIf="user.github" class="list-inline-item"><a [href]="user.github" class="sw-dark" target="_blank"><i class="fab fa-github fa-lg"></i></a></li>
+                            <li *ngIf="user.project" class="list-inline-item"><a [href]="user.project" class="sw-dark"
+                                    target="_blank"><i class="fas fa-project-diagram"></i></a></li>
+                            <li *ngIf="user.linkedin" class="list-inline-item"><a [href]="user.linkedin" class="sw-dark"
+                                    target="_blank"><i class="fab fa-linkedin fa-lg"></i></a></li>
+                            <li *ngIf="user.github" class="list-inline-item"><a [href]="user.github" class="sw-dark"
+                                    target="_blank"><i class="fab fa-github fa-lg"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </li>
             <!-- Remove Modal -->
-            <div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
+            <div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLongTitle">Remove Student</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">&times;</span>
                             </button>
-                          </div>
-                          <div class="modal-body">
+                        </div>
+                        <div class="modal-body">
                             Are you sure to delete {{selectedUser.firstName}}'s account?
-                          </div>
-                          <div class="modal-footer">
+                        </div>
+                        <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="button" (click)="remove()" class="btn btn-danger">Delete</button>
-                          </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </ul>
 </div>
